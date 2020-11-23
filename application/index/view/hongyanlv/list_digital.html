@@ -1,0 +1,334 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <title>{$seo_title}</title>
+
+  <link href="{STATIC_URL}css/yzm-common.css" rel="stylesheet" type="text/css" />
+
+  <link href="{STATIC_URL}css/yzm-style.css" rel="stylesheet" type="text/css" />
+
+  <link href="{STATIC_URL}assets/css/header.css" rel="stylesheet" />
+
+  <link href="{STATIC_URL}assets/css/footer.css" rel="stylesheet" />
+
+  <link href="{STATIC_URL}assets/css/activities.css" rel="stylesheet" />
+
+  <script type="text/javascript" src="{STATIC_URL}js/jquery-1.8.2.min.js"></script>
+
+  <script type="text/javascript" src="{STATIC_URL}js/yzm-front.js"></script>
+
+  <meta name="keywords" content="{$keywords}" />
+
+  <meta name="description" content="{$description}" />
+  <style type="text/css">
+    .picture_bottom .picture_left .prev a{display:inline-block;width:17px;height:33px;background:url({STATIC_URL}assets/img/previous-page.png) no-repeat}
+    .picture_bottom .picture_left .next a{display:inline-block;width:17px;height:33px;background:url({STATIC_URL}assets/img/next-page.png) no-repeat}
+    .videos {
+      display: none;
+      position: fixed;
+      left: 30%;
+      top: 25%;
+      margin-left: -320px;
+      margin-top: -210px;
+      z-index: 100;
+      width: 80%;
+      /* height: 360px; */
+      background: #2b323a;
+      /*opacity: 0.9;*/
+    }
+
+    .vclose {
+      position: absolute;
+      right: 1%;
+      top: 1%;
+      border-radius: 100%;
+      cursor: pointer;
+    }
+
+    .videolist:hover {
+      cursor: pointer;
+    }
+
+
+    .picture {
+      width: 80%;
+      display: none;
+      z-index: 101;
+      position: fixed;
+      bottom: 5%;
+      left: 10%;
+      height: 800px;
+      background: #000000;
+    }
+
+    .picture .picture_bottom {
+      margin: 0 auto;
+    }
+
+    .picture .picture_bottom .picture_left {
+      float: left;
+      margin-left: 19.5%;
+      margin-top: 12%;
+    }
+
+    .picture .picture_bottom .picture_left .picture_img {
+      position: relative;
+      left: -20px;
+      top: -66px;
+      display: table;
+      text-align: center
+    }
+
+    .showImging {
+      width: 900px;
+      height: 600px;
+    }
+
+    .picture_bottom .picture_left .prev {
+      display: inline-block;
+      width: 17px;
+      height: 33px;
+      position: relative;
+      top: -400px;
+      left: -10px;
+    }
+
+    .picture_bottom .picture_left .next {
+      display: inline-block;
+      width: 17px;
+      height: 33px;
+      position: relative;
+      top: -400px;
+      right: 30px;
+      float: right
+    }
+
+    .picture .picture_bottom .picture_right {
+      width: 205px;
+      height: 100%;
+      float: left
+    }
+
+    .ul-show {
+      list-style: none;
+    }
+
+    .ul-show li {
+      float: left;
+      margin-left: 10px;
+    }
+
+    .ul-show li span {
+      position: relative;
+      left: -63px;
+      top: 11px;
+    }
+
+    p.info {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    label.tag-label {
+      margin-left: 15px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+
+<body>
+  {m:include "index","header"}
+
+  <div class="main-container">
+    <div class="topView" style="
+          background-image: url({STATIC_URL}assets/img/newImg/base-bg.jpg);
+          background-size: 100% 100%;
+        ">
+      <div class="topImg" style="
+            background-image: url({STATIC_URL}assets/img/newImg/hongyl.png);
+            background-size: 100% 100%;
+          "></div>
+    </div>
+
+
+    <div class="activities">
+      <div class="yzm-news-tags">
+         <label class="tag-label">热门标签：</label>
+         <a href="{SITE_URL}shuzizhanguan">全部</a>
+         {m:tag field="id,tag" limit="10"}
+         {loop $data $v}
+         <a href="{SITE_URL}shuzizhanguan?tagid={$v[id]}">{$v[tag]}</a>
+         {/loop}
+   		</div>
+      <?php if (isset($_GET['tagid'])) { $tagid = $_GET['tagid'];?>
+      {m:lists where="id in (select aid from yzm_tag_content where tagid=$tagid)" field="title,url,color,inputtime,thumb,click,kankanurl,username"
+      modelid="5" order="click desc" limit="12" page="page"} {loop $data $k=>$v}
+      {php $k=$k+1;}
+
+      <div class="activity">
+        <a href="{$v['kankanurl']}" style="display: block;">
+          <img class="icon" src="{get_thumb($v['thumb'])}" />
+          <div class="info">
+            {$v['title']}
+          </div>
+          <div class="info infoThumb infoCss">
+            <span>{$v['username']}</span>
+            <p class="itemCenter">
+              <span style="
+                    background-image: url({STATIC_URL}assets/img/newImg/icon-eye2.png);
+                    background-size: 100% 100%;
+                  " class="seesee">
+              </span>
+              {$v['click']}
+            </p>
+          </div>
+        </a>
+      </div>
+      {/loop}
+      <?php } else { ?>
+      {m:lists field="title,url,color,inputtime,thumb,click,kankanurl,username"
+      modelid="5" order="click desc" limit="12" page="page"} {loop $data $k=>$v}
+      {php $k=$k+1;}
+
+      <div class="activity">
+        <a href="{$v['kankanurl']}" style="display: block;">
+          <img class="icon" src="{get_thumb($v['thumb'])}" />
+          <div class="info">
+            {$v['title']}
+          </div>
+          <div class="info infoThumb infoCss">
+            <span>{$v['username']}</span>
+            <p class="itemCenter">
+              <span style="
+                    background-image: url({STATIC_URL}assets/img/newImg/icon-eye2.png);
+                    background-size: 100% 100%;
+                  " class="seesee">
+              </span>
+              {$v['click']}
+            </p>
+          </div>
+        </a>
+      </div>
+      {/loop}
+      <?php } ?>
+      <div class="pageinfoContainer cc">{$pages}</div>
+      <p class="info">本网站所有资源均来自网络收集，如存在的内容对您的权益产生损害，请立即联系本网站</p>
+    </div>
+  </div>
+  </div>
+
+  <script type="text/javascript">
+    // toggleElClass
+    $.extend({
+      toggleElClass: function (dom, cName) {
+        $(dom).each(function (i, item) {
+          $(item).hover(
+            function () {
+              $(this).addClass(cName);
+            },
+            function () {
+              $(this).removeClass(cName);
+            }
+          );
+        });
+      },
+    });
+
+    $(function () {
+      $.toggleElClass("div.activity", "blockShadow"); // 正在热播 往期推荐     hoverCss
+    });
+
+    $('.videolist').each(function() { //遍历视频列表
+      $(this).click(function(){ //这个视频被点击后执行
+        var img = $(this).attr('vpath');//获取视频预览图
+        var video = $(this).attr('ipath');//获取视频路径
+
+        $('.videos').html("<video id=\"video\" style='width: 100%;' src='"+video+"' preload=\"auto\" controls=\"controls\" autoplay=\"autoplay\"></video><img onClick=\"close1()\" class=\"vclose\" src=\"{STATIC_URL}assets/img/newImg/gb.png\"/>");
+
+        window.setTimeout(function () {
+          $('.videos').show();
+        }, 80)
+      });
+    });
+
+    function close1(){
+      var v = document.getElementById('video');//获取视频节点
+      $('.videos').hide();//点击关闭按钮关闭暂停视频
+      v.pause();
+      $('.videos').html();
+    }
+
+    $(".show-img").click(function () {
+      $(".picture_right").html('');
+      var str = $(this).data('content');
+
+      var imgs = new Array();
+      imgs = str.split('|');
+      var img = '';
+      $(".showImging").attr('src', '');
+      for (i in imgs) {
+        if (i == 0) $(".showImging").attr('src', imgs[i]);
+        img += '<img class="picture_suo_img" src="' + imgs[i] + '" />';
+      }
+
+
+      $(".picture_right").html(img);
+      $(".picture_suo_img").eq(0).addClass('suo-img');
+      $(".picture").show();
+
+    });
+
+    $(".shutdownimgs").click(function () {
+      $(".picture_right").html('');
+      $(".showImging").attr('src', '');
+
+      $(".picture").hide();
+
+    });
+
+    /*点击加载下一张缩略图*/
+    $(".next").click(function() {
+      var next = $(".suo-img").removeClass("suo-img").eq($(".picture_suo_img").index(this)).next().addClass('suo-img');
+      var src = next.attr('src');
+      var s = $(".suo-img").index();
+      if(s < 0) {
+        var src = $(".picture_suo_img").eq(0).attr('src');
+        $('.showImging').attr('src', src);
+        $(".suo-img").removeClass("suo-img");
+        $(".picture_suo_img").eq(0).addClass('suo-img');
+      } else {
+        $('.showImging').attr('src', src);
+      }
+
+    });
+
+    /*点击加载上一张缩略图*/
+    $(".prev").click(function() {
+      var prev = $(".suo-img").removeClass("suo-img").eq($(".picture_suo_img").siblings().index(this)).prev().addClass('suo-img');
+      var src = prev.attr('src');
+
+      /*判断如果是第一张图则切换到上一页最后一张图*/
+      var s = $(".suo-img").index();
+
+      if(s<0) {
+        var len = $(".picture_suo_img").length - 1;
+        var src = $(".picture_suo_img").eq(len).attr('src');
+        $('.showImging').attr('src', src);
+        $(".suo-img").removeClass("suo-img");
+        $(".picture_suo_img").eq(len).addClass('suo-img');
+      } else {
+        $('.showImging').attr('src', src);
+      }
+    });
+  </script>
+  {m:include "index","footer"}
+</body>
+
+</html>

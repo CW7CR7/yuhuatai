@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>{$seo_title}</title>
+
+    <meta name="keywords" content="{$keywords}" />
+
+    <meta name="description" content="{$description}" />
+
+    <link
+      href="{STATIC_URL}css/yzm-common.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link
+      href="{STATIC_URL}css/yzm-style.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link href="{STATIC_URL}assets/css/header.css" rel="stylesheet" />
+
+    <link href="{STATIC_URL}assets/css/footer.css" rel="stylesheet" />
+
+    <link href="{STATIC_URL}assets/css/test.css" rel="stylesheet" />
+
+    <link href="{STATIC_URL}assets/css/teacher.css" rel="stylesheet" />
+
+    <script
+      type="text/javascript"
+      src="{STATIC_URL}js/jquery-1.8.2.min.js"
+    ></script>
+
+    <script type="text/javascript" src="{STATIC_URL}js/yzm-front.js"></script>
+
+    <script
+      type="text/javascript"
+      src="{STATIC_URL}js/jquery.qqFace.js"
+    ></script>
+  </head>
+
+  <body style="overflow-x: hidden;">
+    {m:include "index","header"}
+
+    <div class="main-container clearfixclearfix">
+      <div class="backgroud">
+        <img src="{STATIC_URL}assets/img/background.jpg" />
+      </div>
+
+      <div class="main-content">
+        <div class="main-info">
+          <div class="avatar">
+            <div class="icon">
+              <img src="{get_thumb($thumb)}" />
+            </div>
+
+            <div class="name">
+              讲师：{$title}
+            </div>
+          </div>
+          <div class="text">
+            {$content}
+          </div>
+
+          <!-- <div class="time">
+
+                    所属基地：{get_catname(get_category($catid, 'parentid'))}
+
+                </div>
+
+                <div class="status">
+
+                    主讲活动：26场
+
+                </div> -->
+
+          <!-- <div style="font-size: 20px;font-family: 幼圆;font-weight:bolder; text-align: center; padding-top: 115px;transform: scale(1,0.95)">
+
+					当前位置：{get_location($catid)}
+
+				</div> -->
+        </div>
+        <div class="box boxbgF2">
+          <div class="block" style="margin-bottom: 0;">
+            <div class="content-box">
+              <div class="title">
+                <div class="text" style="color: #333;">主讲课程</div>
+                <img
+                  class="titIcon"
+                  src="{STATIC_URL}assets/img/newImg/round.png"
+                />
+                <div class="titBtn">
+                  <a class="readMore" href="{$site[site_url]}activity"
+                    >查看更多</a
+                  >
+                </div>
+              </div>
+
+              <div
+                style="
+                  width: 1200px;
+                  margin: 0px auto 0 auto;
+                  margin-bottom: -20px;
+                "
+              >
+                <div class="row-warp-container">
+                  {m:lists field="title,url,color,inputtime,thumb" modelid="5"
+                  order="RAND()" limit="4"} {loop $data $k=>$v} {php $k=$k+1;}
+
+                  <div class="text-thumb">
+                    <a href="{$v[url]}"
+                      ><img src="{get_thumb($v['thumb'])}"
+                    /></a>
+
+                    <div class="info">{$v['title']}</div>
+                  </div>
+
+                  {/loop}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="main-page">
+
+								
+
+
+
+                <div class="info">
+
+                    讲师简介
+
+                </div>
+
+                <div class="focal-line">
+
+
+
+                </div>
+
+                <div class="aline">
+
+
+
+                </div>
+
+                <div class="text">
+
+					{$content}
+
+				</div>
+
+				<div class="text">
+
+                </div>
+
+            </div> -->
+      </div>
+    </div>
+
+    <script type="text/javascript"></script>
+
+    {m:include "index","footer"}
+  </body>
+</html>

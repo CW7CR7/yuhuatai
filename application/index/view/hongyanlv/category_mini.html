@@ -1,0 +1,437 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+  <head>
+
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	  <title>{$seo_title}</title>
+
+	  <link rel="stylesheet" type="text/css" href="{STATIC_URL}plugin/swiper/css/swiper.min.css" />
+
+	  <link href="{STATIC_URL}css/yzm-common.css" rel="stylesheet" type="text/css" />
+
+	  <link href="{STATIC_URL}css/yzm-style.css" rel="stylesheet" type="text/css" />
+
+	  <link href="{STATIC_URL}assets/css/test.css" rel="stylesheet"></head>
+
+      <link href="{STATIC_URL}assets/css/header.css" rel="stylesheet"></head>
+
+      <link href="{STATIC_URL}assets/css/footer.css" rel="stylesheet"></head>
+
+	  <script type="text/javascript" src="{STATIC_URL}js/jquery-1.8.2.min.js"></script>
+
+	  <script type="text/javascript" src="{STATIC_URL}js/yzm-front.js"></script>
+
+	  <script type="text/javascript" src="{STATIC_URL}plugin/swiper/js/swiper.min.js"></script>
+
+	  <meta name="keywords" content="{$keywords}" />
+
+	  <meta name="description" content="{$description}" />	  
+
+  </head>
+
+  <body style="overflow-x: hidden;"  >
+
+	{m:include "index","header"} 
+
+	<div class="main-container">
+
+	 <div class="box">
+
+		 
+
+		<div class="block" style="margin: 15px auto;width: 90%; ">
+
+
+
+			<div style="font-size: 20px;font-weight:bolder;">
+
+				当前位置：{get_location($catid)}
+
+			</div>
+
+		</div>
+
+		<div class="block" style="margin: 0 auto;width: 90%; ">
+
+			<div class="banner-box">
+
+				<div class="menu">
+
+					<div class="item">线上研学活动<h style="float:right;">▶&ensp;&nbsp;</h></div>
+
+					<div class="item">线上研学活动<h style="float:right;">▶&ensp;&nbsp;</h></div>
+
+					<div class="item">线上研学活动<h style="float:right;">▶&ensp;&nbsp;</h></div>
+
+					<div class="item">线上研学活动<h style="float:right;">▶&ensp;&nbsp;</h></div>
+
+					<div class="item">线上研学活动<h style="float:right;">▶&ensp;&nbsp;</h></div>
+
+					<div class="item">线上研学活动<h style="float:right;">▶&ensp;&nbsp;</h></div>
+
+					<div class="item">线上研学活动<h style="float:right;">▶&ensp;&nbsp;</h></div>
+
+				</div>
+
+				<div class="images">
+
+					<div class="swiper-container" style="height: 100%;">
+
+						<div class="swiper-wrapper">
+
+							{m:banner field="title,image,url,typeid,status" limit="10"}
+
+							{loop $data $v} 
+
+							<div class="swiper-slide">
+
+								<a href="{$v[url]}" target="_blank">
+
+									<img  style="width:100%;height: 100%;border-radius: 0px 10px 10px 0px;" src="{$v[image]}" alt="{$v[title]}" title="{$v[title]}" />
+
+								</a>
+
+							</div>
+
+							{/loop}
+
+						</div>
+
+						<div class="swiper-pagination"></div>
+
+				   </div>	
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="block" style="width: 90%; margin: 30px auto;">
+
+			<div class="content-box">
+
+				<div class="title">
+
+					<div class="text">最近活动马上看</div>
+
+					<div class="bottom"></div>
+
+				</div>
+
+				<div class="content" style=" padding: 10px;">
+
+					<div class="hot-box" >
+
+						<div class="images">
+
+							<div class="swiper-container" style="height: 100%;">
+
+								<div class="swiper-wrapper" >
+
+									{m:lists field="title,url,userid,color,inputtime,username,thumb,description" catid="$catid" modelid="5" order="RAND()" limit="8"}
+
+									{loop $data $v} 
+
+									<div class="swiper-slide" >
+
+										<a href="{$v[url]}" target="_blank">
+
+											<img  style="width:100%;height: 100%;border-radius: 10px 0px 0px 10px;" src="{get_thumb($v['thumb'])}" alt="{$v[title]}" title="{$v[title]}" />
+
+										</a>
+
+									</div>
+
+									{/loop}
+
+								</div>
+
+								<div class="swiper-pagination"></div>
+
+						   </div>	
+
+						</div>
+
+						<div class="menu">
+
+							{m:lists field="title,url,userid,color,inputtime,username,thumb,description" catid="$catid" modelid="5" order="RAND()" limit="7"}
+
+							{loop $data $v} 
+
+							<div class="item">{date('Y-m-d', $v['inputtime'])}&ensp;&ensp; {$v[title]}</div>
+
+							{/loop}
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		 <div class="block" style="width: 90%; margin: 0 auto;">
+
+			 <div class="content-box" style="width: 45%;">
+
+				 <div class="title">
+
+					 <div class="text">专题系列</div>
+
+					 <div class="bottom"></div>
+
+				 </div>
+
+				 <div class="content" style="height: 410px; overflow: hidden;">
+
+					 <div style="display: flex; flex-direction: row; height: 100%; width: 100%;padding: 10px;">
+
+						 <img src="{STATIC_URL}assets/img/aa1.jpg" style="height: calc(100% - 20px); width: 70%; border-radius: 5px;">
+
+						 <div style="display: flex; flex-direction: column; height: 100%; width: 50%; ;padding: 5px; margin-right: 12px;">
+
+							 <img src="{STATIC_URL}assets/img/aa1.jpg" style="height: calc(50% - 12px); width: 100%; border-radius: 5px; margin-bottom: 5px; margin-top: -5px;">
+
+							 <img src="{STATIC_URL}assets/img/aa1.jpg" style="height: calc(50% - 12px); width: 100%; border-radius: 5px;">
+
+						 </div>
+
+					 </div>
+
+				 </div>
+
+			 </div>
+
+			 <div class="content-box" style="width: 25%; margin-left:20px">
+
+				 <div class="title">
+
+					 <div class="text">新闻</div>
+
+					 <div class="bottom"></div>
+
+				 </div>
+
+				 <div class="content" style="height: 410px; overflow-y: hidden;">
+
+					 <div class="column-container" style="padding-top:15px;padding-left:20px" >
+
+						 {m:lists field="title,url,userid,color,inputtime,username,thumb,description" catid="$catid" modelid="1" order="RAND()" limit="8"}
+
+						 {loop $data $k=>$v}
+
+						 {php $k=$k+1;}
+
+						 <div class="news">
+
+							 <ddiv class="title"><a href="{$v[url]}">{$v['title']}</a></ddiv>
+
+							 <div class="desc">{$v['description']}</div>
+
+						 </div>
+
+						 {/loop}	
+
+					 </div>
+
+				 </div>
+
+			 </div>
+
+			 <div class="content-box" style="width: 30%;margin-left:20px;">
+
+				 <div class="title">
+
+					 <div class="text">热门推荐</div>
+
+					 <div class="bottom"></div>
+
+				 </div>
+
+				 <div class="content" style="height: 410px; overflow-y: hidden;">
+
+					 <div class="column-container" style="padding-top:15px;padding-left:20px">
+
+						 {m:lists field="title,url,userid,color,inputtime,username,thumb,description" catid="$catid" modelid="5" order="RAND()" limit="8"}
+
+						 {loop $data $k=>$v}
+
+						 {php $k=$k+1;}
+
+						 <div class="recommend">
+
+							 <div class="image-area">
+
+								 <a href="{$v[url]}"><img src="{get_thumb($v['thumb'])}"></a>
+
+							 </div>
+
+							 <div class="text-area">
+
+								 <div class="desc"><a href="{$v[url]}">{$v['description']}</a></div>
+
+								 <div class="writer">
+
+									 <div class="icon">
+
+										 <img src="{get_memberavatar($v['userid'])}" >
+
+									 </div>
+
+									 <div class="name">{$v['username']}</div>
+
+								 </div>
+
+							 </div>
+
+						 </div>
+
+						 {/loop}	
+
+					 </div>
+
+				 </div>
+
+			 </div>
+
+		 </div>
+
+		 <div class="block" style="width: 90%; margin: 20px auto;">
+
+			 <div class="content-box"  >
+
+				 <div class="title">
+
+					 <div class="text">讲师风采</div>
+
+					 <div class="bottom"></div>
+
+				 </div>
+
+				 <div class="content">
+
+					 <div class="row-warp-container" style="padding-top:40px">
+
+						 {m:lists field="title,url,color,inputtime,thumb,description" modelid="6" catid="$catid" order="RAND()" limit="8"}
+
+						 {loop $data $k=>$v}
+
+						 {php $k=$k+1;}
+
+						 <div class="teacher-info">
+
+							 <div class="icon"><a href="{$v[url]}"><img src="{get_thumb($v['thumb'])}"></a></div>
+
+							 <div class="teacher-content">
+
+								 <div class="title">{$v['title']}</div>
+
+								 <div class="desc"><a href="{$v[url]}">{$v['description']}</a></div>
+
+								 <div class="company">活捉史文恭、生擒孙安、活捉卞祥等</div>
+
+							 </div>
+
+						 </div>
+
+						 {/loop}	
+
+					 </div>
+
+				 </div>
+
+			 </div>
+
+		 </div>
+
+		 <div class="block">
+
+			<div class="content-box">
+
+				<div class="title">
+
+					<div class="text">红色文化教育基地</div>
+
+					<div class="bottom"></div>
+
+				</div>
+
+				<div style="padding-left:50px; ">
+
+					<div class="row-container" style="padding:10px">
+
+					{m:nav field="catid,catimg,catname,arrchildid,pclink,type" where="parentid=0" order="RAND()" limit="1,9"}
+
+					{loop $data $k=>$v}
+
+					{php $k=$k+1;}
+
+					<div class="thumb"  style="margin:0 5px;">
+
+						
+
+						<a href="{$v[pclink]}"><img src="{get_thumb($v['catimg'])}"></a>
+
+					</div>
+
+					{/loop}	
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	 </div>
+
+
+
+ </div>
+
+
+
+	 <script type="text/javascript">
+
+		 var swiper = new Swiper('.swiper-container', {
+
+			 loop : true,
+
+			 centeredSlides: true,
+
+			 autoplay: {
+
+				 delay: 3500,
+
+				 disableOnInteraction: false
+
+			 },
+
+			 pagination: {
+
+				 el: '.swiper-pagination',
+
+				 clickable: true
+
+			 },
+
+			 navigation: {
+
+				 nextEl: '.yzm-button-next',
+
+				 prevEl: '.yzm-button-prev',
+
+			 },
+
+		 });
+
+	 </script>
+
+{m:include "index","footer"}

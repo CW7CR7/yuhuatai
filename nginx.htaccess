@@ -1,0 +1,6 @@
+# Œ±æ≤Ã¨≈‰÷√-start
+  if (!-e $request_filename) {
+     rewrite  ^(.*)$  /index.php?s=$1  last;
+     break;
+  }
+# Œ±æ≤Ã¨≈‰÷√-end

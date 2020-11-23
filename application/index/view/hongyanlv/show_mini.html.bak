@@ -1,0 +1,794 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>{$seo_title}</title>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{STATIC_URL}plugin/swiper/css/swiper.min.css"
+    />
+
+    <link
+      href="{STATIC_URL}css/yzm-common.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link
+      href="{STATIC_URL}css/yzm-style.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link href="{STATIC_URL}assets/css/test.css" rel="stylesheet" />
+
+    <link href="{STATIC_URL}assets/css/header.css" rel="stylesheet" />
+
+    <link href="{STATIC_URL}assets/css/footer.css" rel="stylesheet" />
+
+    <script
+      type="text/javascript"
+      src="{STATIC_URL}js/jquery-1.8.2.min.js"
+    ></script>
+
+    <script
+      type="text/javascript"
+      src="{STATIC_URL}plugin/swiper/js/swiper.min.js"
+    ></script>
+
+    <meta name="keywords" content="{$keywords}" />
+
+    <meta name="description" content="{$description}" />
+
+    <meta
+      http-equiv="mobile-agent"
+      content="format=xhtml;url={$site[site_url]}index.php?m=mobile"
+    />
+
+    <script type="text/javascript">
+      if (window.location.toString().indexOf("pref=padindex") != -1) {
+      } else {
+        if (
+          /AppleWebKit.*Mobile/i.test(navigator.userAgent) ||
+          /MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(
+            navigator.userAgent
+          )
+        ) {
+          if (window.location.href.indexOf("?mobile") < 0) {
+            try {
+              if (
+                /Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(
+                  navigator.userAgent
+                )
+              ) {
+                window.location.href = "{$site[site_url]}index.php?m=mobile";
+              } else if (/iPad/i.test(navigator.userAgent)) {
+              } else {
+              }
+            } catch (e) {}
+          }
+        }
+      }
+    </script>
+  </head>
+
+  <body style="overflow-x: hidden;">
+    {m:include "index","header"}
+
+    <div class="main-container">
+      <div
+        class="box"
+        style="width: 100%; padding-top: 0; background-color: #da2c2a;"
+      >
+        <div class="block" style="margin: 0 auto; height: 300px;">
+          <div class="banner-box">
+            <div class="images">
+              <div class="swiper-container swiper0" style="height: 100%;">
+                <div class="swiper-wrapper">
+                  {m:banner field="title,image,url,typeid,status" limit="10"}
+                  {loop $data $v}
+
+                  <div class="swiper-slide">
+                    <a href="{$v[url]}" target="_blank">
+                      <img
+                        style="width: 100%; height: 100%;"
+                        src="{$v[image]}"
+                        title="{$v[title]}"
+                      />
+                    </a>
+                  </div>
+
+                  {/loop}
+                </div>
+                <div
+                  class="yzm-button-next nextEl0"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Next slide"
+                  aria-disabled="false"
+                ></div>
+                <div
+                  class="yzm-button-prev prevEl0"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Previous slide"
+                  aria-disabled="false"
+                ></div>
+                <div class="swiper-pagination spagination0"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="box boxbgF2">
+        <div class="block" style="margin-bottom: 0;">
+          <div class="content-box">
+            <div class="title">
+              <div class="text">正在热播</div>
+              <img
+                class="titIcon"
+                src="{STATIC_URL}assets/img/newImg/round.png"
+              />
+              <div class="titBtn">
+                <a class="readMore" href="{$site[site_url]}activity"
+                  >查看更多</a
+                >
+              </div>
+            </div>
+
+            <div
+              style="
+                width: 1200px;
+                margin: 0px auto 0 auto;
+                margin-bottom: -20px;
+              "
+            >
+              <div class="row-warp-container">
+                {m:lists field="title,url,color,inputtime,thumb" modelid="5"
+                order="RAND()" limit="4"} {loop $data $k=>$v} {php $k=$k+1;}
+
+                <div class="text-thumb">
+                  <a href="{$v[url]}"><img src="{get_thumb($v['thumb'])}" /></a>
+
+                  <div class="info">{$v['title']}</div>
+                </div>
+
+                {/loop}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box boxbgF2">
+        <div class="block" style="margin-bottom: 40px;">
+          <div class="content-box">
+            <div class="title">
+              <div class="text">往期推荐</div>
+
+              <img
+                class="titIcon"
+                src="{STATIC_URL}assets/img/newImg/round.png"
+              />
+              <div class="titBtn">
+                <a class="readMore" href="{$site[site_url]}activity"
+                  >查看更多</a
+                >
+              </div>
+            </div>
+
+            <div style="width: 1200px;">
+              <div class="row-warp-container">
+                {m:lists field="title,url,color,inputtime,thumb" modelid="5"
+                limit="4"} {loop $data $k=>$v} {php $k=$k+1;}
+
+                <div class="text-thumb">
+                  <a href="{$v[url]}"><img src="{get_thumb($v['thumb'])}" /></a>
+
+                  <div class="info">{$v['title']}</div>
+                </div>
+
+                {/loop}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- <div
+        class="box boxRed"
+        style="
+          background-image: url({STATIC_URL}assets/img/newImg/base-bg.jpg);
+          background-size: 100% 100%;
+          padding-bottom: 80px;
+        "
+      >
+        <div class="block">
+          <div class="content-box redContent">
+            <div class="title titBlock">
+              <div class="text redTxt redTxtCss">重点合作红色文化教育基地</div>
+
+              <img
+                style="width: 18px;"
+                class="titIcon redTitIcon"
+                src="{STATIC_URL}assets/img/newImg/round1.png"
+              />
+            </div>
+
+            <div class="images">
+              <div class="swiper-container swiper1 swiper-containerImg">
+                <div class="swiper-wrapper">
+                  {m:nav field="catid,catimg,catname,arrchildid,pclink,type"
+                  modelid="9" where="parentid=0" order="RAND()" limit="1,6"}
+
+                  <div class="swiper-slide">
+                    {loop $data $k=>$v} {php $k=$k+1;}
+                    <a href="{$v[pclink]}"
+                      ><img
+                        class="redImg"
+                        width="150"
+                        height="150"
+                        src="{get_thumb($v['catimg'])}"
+                    /></a>
+
+                    {/loop}
+                  </div>
+                </div>
+                <div
+                  class="yzm-button-next nextEl1"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Next slide"
+                  aria-disabled="false"
+                ></div>
+                <div
+                  class="yzm-button-prev prevEl1"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Previous slide"
+                  aria-disabled="false"
+                ></div>
+                <div class="swiper-pagination spagination1"></div>
+              </div>
+              <div class="imagecss">
+                <a class="readMore" href="{$site[site_url]}minijidi"
+                  >查看更多</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- <div class="box" style="background-color: #fff;height: 450px;">
+            <div class="block">
+
+                <div class="content-box redContent">
+
+                    <div class="title titBlock">
+
+                        <div class="text redTxt redTxtCss" style="color:#232323;">近期活动马上看</div>
+
+                       <a href="">
+                       <img class="titIcon redTitIcon" src="{STATIC_URL}assets/img/newImg/round.png" /></a>
+
+                    </div>
+
+                    <div class="activityBlock">
+
+                        <div class="playBtn">
+                            <img class="titIcon redTitIcon" width="60" height="60" src="{STATIC_URL}assets/img/newImg/play.png" />
+                            <div><p class="instruction">中国革命史地位</p></div>
+                        </div>
+
+                        <div class="activityBg" style="width: 1200px;height: 300px;border-radius: 12px;background-image: url({STATIC_URL}assets/img/newImg/pic1.jpg);background-size: 100% 100%;"></div>
+
+                        <div class=" images redContentImg  activityImg" style="background-image: url({STATIC_URL}assets/img/newImg/activityBg.png);background-size: 100% 100%;">
+
+                            <div class="swiper-container swiper2 swiper-containerImg">
+    
+                                <div class="swiper-wrapper">
+    
+                                    <div class="swiper-slide"> -->
+
+      <!-- {m:lists field="title,url,color,inputtime,thumb, start_time ,userid" modelid="5" order="RAND()" limit="1,9"}
+    
+                                        {loop $data $k=>$v}
+        
+                                        {php $k=$k+1;}
+                                        <div class="actTimer active" style="display: inline-block;">
+                                            <a href="#"><img class="activityImgs" width=100 height="60" src="{get_thumb($v['thumb'])}"></a>
+                                            <span class="startTime">{$v[userid]}</span>
+                                        </div>
+                                        {/loop} -->
+      <!-- <div class="actTimer active" data-Idx="10" style="display: inline-block;">
+                                            <a href="{STATIC_URL}assets/img/newImg/22.png"><img class="activityImgs" width=100 height="60" src="{STATIC_URL}assets/img/newImg/22.png"></a>
+                                            <span class="" style="color:red">直播中</span>
+                                        </div>  
+                                        <div class="actTimer active" data-Idx="11" style="display: inline-block;">
+                                            <a href="{STATIC_URL}assets/img/newImg/11.png"><img class="activityImgs" width=100 height="60" src="{STATIC_URL}assets/img/newImg/11.png"></a>
+                                            <span class="startTime">10:00</span>
+                                        </div>  
+                                        <div class="actTimer active" data-Idx="12" style="display: inline-block;">
+                                            <a href="{STATIC_URL}assets/img/newImg/33.png"><img class="activityImgs" width=100 height="60" src="{STATIC_URL}assets/img/newImg/33.jpg"></a>
+                                            <span class="startTime">11:00</span>
+                                        </div>  
+                                        <div class="actTimer active" data-Idx="13" style="display: inline-block;">
+                                            <a href="{STATIC_URL}assets/img/newImg/44.png"><img class="activityImgs" width=100 height="60" src="{STATIC_URL}assets/img/newImg/44.jpg"></a>
+                                            <span class="startTime">12:00</span>
+                                        </div>  
+                                        <div class="actTimer active" data-Idx="14" style="display: inline-block;">
+                                            <a href="{STATIC_URL}assets/img/newImg/55.png"><img class="activityImgs" width=100 height="60" src="{STATIC_URL}assets/img/newImg/55.png"></a>
+                                            <span class="startTime">13:00</span>
+                                        </div>  
+                                        <div class="actTimer active" data-Idx="15" style="display: inline-block;">
+                                            <a href="{STATIC_URL}assets/img/newImg/66.png"><img class="activityImgs" width=100 height="60" src="{STATIC_URL}assets/img/newImg/66.png"></a>
+                                            <span class="startTime">14:00</span>
+                                        </div>  
+                                        <div class="actTimer active" data-Idx="16" style="display: inline-block;">
+                                            <a href="{STATIC_URL}assets/img/newImg/77.png"><img class="activityImgs" width=100 height="60" src="{STATIC_URL}assets/img/newImg/77.jpg"></a>
+                                            <span class="startTime">15:00</span>
+                                        </div>  
+                                        <div class="actTimer active" data-Idx="17" style="display: inline-block;">
+                                            <a href="{STATIC_URL}assets/img/newImg/88.png"><img class="activityImgs" width=100 height="60" src="{STATIC_URL}assets/img/newImg/88.jpg"></a>
+                                            <span class="startTime">16:00</span>
+                                        </div>  
+                                        <div class="actTimer active" data-Idx="18" style="display: inline-block;">
+                                            <a href="{STATIC_URL}assets/img/newImg/99.png"><img class="activityImgs" width=100 height="60" src="{STATIC_URL}assets/img/newImg/99.jpg"></a>
+                                            <span class="startTime">17:00</span>
+                                        </div>  
+                                        <div class="actTimer active" data-Idx="19" style="display: inline-block;">
+                                            <a href="{STATIC_URL}assets/img/newImg/00.png"><img class="activityImgs" width=100 height="60" src="{STATIC_URL}assets/img/newImg/00.jpg"></a>
+                                            <span class="startTime">18:00</span>
+                                        </div> 
+                                    </div>
+                                </div>
+                                <div class="yzm-button-next nextEl2" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"></div>
+                                <div class="yzm-button-prev prevEl2" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="false"></div>
+                                <div class="swiper-pagination spagination2"></div>
+                                </div>
+                       
+                         </div>
+                    </div>
+
+                 </div>
+
+            </div>
+        </div> -->
+
+      <div class="box boxbgF2" style="padding-bottom: 60px;">
+        <div class="block specialBlock">
+          <div class="blockLeft">
+            <div class="content-box">
+              <div class="title">
+                <div class="text">新闻</div>
+
+                <img
+                  class="titIcon"
+                  src="{STATIC_URL}assets/img/newImg/round.png"
+                />
+                <a
+                  class="readMore"
+                  href="{$site[site_url]}article"
+                  style="float: right; margin-top: 10px;"
+                  >查看更多</a
+                >
+              </div>
+
+              <div
+                class="content"
+                style="
+                  overflow: hidden;
+                  background-color: #fff;
+                  padding: 13px 20px 0 20px;
+                "
+              >
+                {m:lists
+                field="title,url,userid,color,inputtime,username,thumb,description,flag"
+                modelid="1" order="RAND()" limit="8"} {loop $data $k=>$v} {php
+                $k=$k+1;}
+
+                <div class="news">
+                  <h4 class="title"><a href="{$v[url]}">{$v['title']}</a></h4>
+                </div>
+
+                {/loop}
+                <!-- <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    height: 100%;
+                    width: 100%;
+                    padding: 10px;
+                  "
+                >
+                  <img
+                    src="{STATIC_URL}assets/img/aa1.jpg"
+                    style="
+                      height: calc(100% - 20px);
+                      width: 70%;
+                      border-radius: 5px;
+                    "
+                  />
+
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      height: 100%;
+                      width: 50%;
+                      padding: 5px;
+                      margin-right: 12px;
+                    "
+                  >
+                    <img
+                      src="{STATIC_URL}assets/img/aa1.jpg"
+                      style="
+                        height: calc(50% - 12px);
+                        width: 100%;
+                        border-radius: 5px;
+                        margin-bottom: 5px;
+                        margin-top: -5px;
+                      "
+                    />
+
+                    <img
+                      src="{STATIC_URL}assets/img/aa1.jpg"
+                      style="
+                        height: calc(50% - 12px);
+                        width: 100%;
+                        border-radius: 5px;
+                      "
+                    />
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="blockRight">
+            <!-- <div class="content-box" style="margin-bottom: 35px;">
+              <div class="title">
+                <div class="text">新闻</div>
+
+                <img
+                  class="titIcon"
+                  src="{STATIC_URL}assets/img/newImg/round.png"
+                />
+                <a
+                  class="readMore"
+                  href="{$site[site_url]}article"
+                  style="float: right; margin-top: 10px;"
+                  >查看更多</a
+                >
+              </div>
+
+              <div
+                class="content"
+                style="
+                  height: 160px;
+                  overflow-y: hidden;
+                  background-color: #fff;
+                "
+              >
+                <div
+                  class="column-container"
+                  style="padding-top: 15px; padding-left: 20px;"
+                >
+                  <div class="news tagHot">
+    
+                                    <div class="title"><a href="#">爆特朗普总统狼狈藏地库</a><span class="label-hot">HOT</span></div>
+    
+                                    <div class="desc">本用于防止外敌入侵的地堡，却在关键时刻救了特朗普“一命”。这事说起来滑稽、可笑，却又无比的真实。据观察者网证实，在5月29日示威者围攻白宫的当天夜晚，白宫响起刺耳的警报声。</div>
+    
+                                </div> 
+
+            {m:lists
+                  field="title,url,userid,color,inputtime,username,thumb,description,flag"
+                  modelid="1" order="RAND()" limit="8"} {loop $data $k=>$v} {php
+                  $k=$k+1;}
+
+                  <div class="news">
+                    <h4 class="title"><a href="{$v[url]}">{$v['title']}</a></h4>
+                  </div>
+
+                  {/loop} -->
+            <!-- </div>
+              </div>
+            </div> -->
+
+            <div class="content-box">
+              <div class="title">
+                <div class="text">动态</div>
+
+                <img
+                  class="titIcon"
+                  src="{STATIC_URL}assets/img/newImg/round.png"
+                />
+                <a
+                  class="readMore"
+                  href="{$site[site_url]}activity"
+                  style="float: right; margin-top: 10px;"
+                  >查看更多</a
+                >
+              </div>
+
+              <div
+                class="content"
+                style="
+                  height: 260px;
+                  overflow-y: hidden;
+                  background-color: transparent;
+                "
+              >
+                <div class="column-container">
+                  {m:lists
+                  field="title,url,userid,color,inputtime,username,thumb,description"
+                  modelid="5" order="RAND()" limit="8"} {loop $data $k=>$v} {php
+                  $k=$k+1;}
+
+                  <div class="recommend">
+                    <div class="image-area">
+                      <a href="{$site[site_url]}activity"
+                        ><img src="{get_thumb($v['thumb'])}"
+                      /></a>
+                    </div>
+
+                    <div class="text-area">
+                      <div class="desc">
+                        <a href="{$site[site_url]}activity"
+                          >{$v['description']}</a
+                        >
+                      </div>
+
+                      <div class="writer">
+                        <!-- <div class="icon">
+    
+                                                <img src="{get_memberavatar($v['userid'])}" >
+    
+                                            </div> -->
+
+                        <div class="name">{$v['username']}</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/loop}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="box boxRed"
+        style="
+          background-image: url({STATIC_URL}assets/img/newImg/lecturer-bg.jpg);
+          background-size: 100% 100%;
+          height: 395px;
+        "
+      >
+        <div class="block">
+          <div class="content-box redContent">
+            <div class="title titBlock">
+              <div class="text redTxt redTxtCss" style="color: #232323;">
+                讲师风采
+              </div>
+
+              <img
+                style="width: 18px;"
+                class="titIcon redTitIcon"
+                src="{STATIC_URL}assets/img/newImg/round.png"
+              />
+            </div>
+
+            <div class="images">
+              <div class="swiper-container swiper-containerImg swiper3">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    {m:lists field="title,url,color,inputtime,thumb,description
+                    " modelid="6" order="RAND()" limit="8"} {loop $data $k=>$v}
+                    {php $k=$k+1;}
+
+                    <div class="one-lecturer">
+                      <a href="{$v[url]}"
+                        ><img
+                          class="redImg teacherImgs"
+                          style="margin-right: 0;"
+                          width="120"
+                          height="120"
+                          src="{get_thumb($v['thumb'])}"
+                      /></a>
+                      <h3 class="teacherH3">{$v[title]}</h3>
+                      <p class="teacherDes">{$v[description]}</p>
+                    </div>
+
+                    {/loop}
+                  </div>
+                </div>
+                <div
+                  class="yzm-button-next nextEl3"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Next slide"
+                  aria-disabled="false"
+                ></div>
+                <div
+                  class="yzm-button-prev prevEl3"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Previous slide"
+                  aria-disabled="false"
+                ></div>
+                <div class="swiper-pagination spagination3"></div>
+              </div>
+              <div class="imagecss">
+                <a class="readMore" href="{$site[site_url]}teacher">查看更多</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="box boxRed" style="    padding: 40px 0;background-image: url({STATIC_URL}assets/img/newImg/module-bg.jpg);background-size: 100% 100%;">
+            <div class="block">
+
+                <div class="content-box redContent" id="aboutBlock">
+
+                    <img src="{STATIC_URL}assets/img/newImg/module1.png" alt="传统文化">
+                    <img src="{STATIC_URL}assets/img/newImg/module2.png" alt="红文之旅">
+                    <img src="{STATIC_URL}assets/img/newImg/module3.png" alt="战争秘史">
+                    <img src="{STATIC_URL}assets/img/newImg/module4.png" alt="创新文教">
+
+                </div>
+
+            </div>
+        </div> -->
+    </div>
+
+    <script type="text/javascript">
+      function SwiperFn(idx, dom, aliasNext, aliasPrev) {
+        var autoplay = null;
+
+        if (idx === 1 || idx === 3) {
+          autoplay = false;
+        } else {
+          autoplay = {
+            delay: 4500,
+
+            disableOnInteraction: false,
+          };
+        }
+
+        var swiper = new Swiper(dom, {
+          loop: true,
+
+          centeredSlides: true,
+
+          autoplay: autoplay,
+
+          observer: true, //修改swiper自己或子元素时，自动初始化swiper
+
+          observeParents: true, //修改swiper的父元素时，自动初始化swiper
+
+          pagination: {
+            el: ".swiper-pagination.spagination" + idx,
+
+            clickable: true,
+          },
+
+          navigation: {
+            nextEl: ".yzm-button-next" + aliasNext + idx,
+
+            prevEl: ".yzm-button-prev" + aliasPrev + idx,
+          },
+        });
+
+        var $next = $(".yzm-button-next" + aliasNext + idx),
+          $prev = $(".yzm-button-prev" + aliasPrev + idx),
+          $pagination = $(".swiper-pagination.spagination" + idx);
+
+        if (!idx || idx === 1 || idx === 2 || idx === 3) {
+          if (idx === 1 || idx === 2 || idx === 3) {
+            $pagination.hide();
+
+            $next.hide();
+
+            $prev.hide();
+            return;
+          }
+
+          $next.hide();
+
+          $prev.hide();
+        }
+
+        $("div.images:eq(" + idx + ")").hover(
+          function () {
+            $next.fadeIn();
+
+            $prev.fadeIn();
+          },
+          function () {
+            if (idx) {
+              return;
+            }
+
+            $next.fadeOut();
+
+            $prev.fadeOut();
+          }
+        );
+      }
+
+      // toggleElClass
+      $.extend({
+        toggleElClass: function (dom, cName) {
+          $(dom).each(function (i, item) {
+            $(item).hover(
+              function () {
+                $(this).addClass(cName);
+              },
+              function () {
+                $(this).removeClass(cName);
+              }
+            );
+          });
+        },
+      });
+
+      function clickSearchInput(e) {
+        e.stopPropagation();
+        $("div.selectDiv").show();
+      }
+
+      function clickSearchLi(e) {
+        e.stopPropagation();
+        $("div.ulInput").text(e.currentTarget.innerText);
+        $("div.selectDiv").hide();
+      }
+
+      $(function () {
+        let $selectDiv = $("div.selectDiv");
+        $("body").on("click", function (e) {
+          e.stopPropagation();
+          if ($selectDiv.css("display") !== "none") {
+            $selectDiv.hide();
+          }
+        });
+
+        $(document).scroll(function () {
+          $selectDiv.hide();
+        });
+
+        //近期活动马上看
+        let currentHours = new Date().getHours();
+        $(".actTimer.active[data-Idx=" + 10 + "]")
+          .find("img")
+          .addClass("activeActicityChildren")
+          .parent()
+          .siblings(".startTime")
+          .addClass("redColor")
+          .text("直播中");
+
+        $(".actTimer.active").each(function (i, item) {
+          $(item).find("a").removeAttr("href");
+        });
+
+        $.toggleElClass("div.recommend", "shadowCSS"); // 热门推荐   hoverCss
+        $.toggleElClass("div.text-thumb", "blockShadow"); // 正在热播 往期推荐     hoverCss
+
+        SwiperFn(0, ".swiper-container.swiper0", ".nextEl", ".prevEl"); //banner 轮播
+        SwiperFn(1, ".swiper-container.swiper1", ".nextEl", ".prevEl"); //红色基地  轮播
+        SwiperFn(3, ".swiper-container.swiper3", ".nextEl", ".prevEl"); //讲师  轮播
+      });
+    </script>
+
+    {m:include "index","footer"}
+  </body>
+</html>

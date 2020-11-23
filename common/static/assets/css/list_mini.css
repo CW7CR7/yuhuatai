@@ -1,0 +1,245 @@
+.main-container {
+  width: 100%;
+  background-color: #f2f2f2;
+}
+
+.main-container .activities {
+  margin: 0 auto;
+  /* width: 1200px; */
+  height: 100%;
+  /* position: relative; */
+  padding-top: 50px;
+  padding-left: 15px;
+  box-sizing: border-box;
+  width: 1200px;
+}
+
+.main-container .activities .activity {
+  margin: 20px 5px;
+  /* width: 280px; */
+  /* height: 190px; */
+  border-radius: 10px;
+  background-color: white;
+  /* position: relative; */
+  width: 47%;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.main-container .activities .activity .enter {
+  margin: 10px 10px;
+
+  border-radius: 10px;
+
+  height: 90%;
+
+  background-color: #46a0ff;
+
+  width: 100px;
+
+  float: right;
+}
+
+.main-container .activities .activity .enter .enter-text {
+  position: absolute;
+
+  padding-left: 20px;
+
+  font-size: 15px;
+
+  font-weight: border;
+
+  color: #ddffff;
+
+  top: 120px;
+}
+
+.main-container .activities .activity .enter img {
+  margin: 50px 20px;
+
+  width: 50px;
+}
+
+.main-container .activities .activity .icon {
+  width: 120px;
+  height: 120px;
+  margin-left: 40px;
+    margin-right: 10px;
+}
+
+.main-container .activities .activity .info {
+  background-color: transparent;
+  /* position: absolute; */
+  /* margin: 10px 0; */
+  /* width: 70%; */
+  border-radius: 10px;
+  /* height: 90%; */
+  /* margin: 10px; */
+  margin-top: 0;
+  text-align: center;
+  /* width: 260px; */
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  /* font-size: 1.2em; */
+  color: #333;
+  /* float: right; */
+  margin-top: 25px;
+  /* width: 70%; */
+  text-align: left;
+  /* margin-bottom: 20px; */
+}
+.pageinfo {
+  display: none;
+}
+.main-container .activities .activity .info .detail {
+  top: 0;
+
+  width: 100%;
+}
+
+.main-container .activities .activity .info .name-row,
+.main-container .activities .activity .info .detail-row {
+  display: inline-block;
+}
+
+.main-container .activities .activity .info .detail-row {
+  margin: 30px 40px;
+
+  font-size: 20px;
+
+  color: #949494;
+
+  font-family: 幼圆;
+
+  font-weight: bolder;
+
+  display: inline-block;
+}
+
+.main-container .activities .activity .info .status {
+  border-radius: 4px;
+
+  color: #539bef;
+
+  text-align: center;
+
+  border: 2px solid #539bef;
+
+  padding-top: 2px;
+
+  width: 50px;
+
+  height: 30px;
+
+  font-size: 15px;
+
+  display: inline-block;
+}
+
+.main-container .activities .activity .info .time {
+  float: right;
+
+  color: #949494;
+
+  transform: none;
+
+  padding-top: 2px;
+
+  font-size: 20px;
+}
+.topView {
+  width: 100%;
+  height: 186px;
+  display: flex;
+  justify-content: center;
+}
+.topView > div {
+  width: 160px;
+  height: 53px;
+  margin-top: 60px;
+}
+.activity .info  {
+  font-size: 1.2em;
+  color: #333;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+.activity a:hover {
+  color: #333;
+}
+.blockShadow {
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+.pageinfoContainer {
+  text-align: center;
+  margin: 60px 0;
+}
+.pageinfoContainer > a {
+  margin: 0 10px;
+  color: #808080;
+}
+.pageinfoContainer > a:hover {
+  color: red;
+}
+.pageinfoContainer > a.curpage {
+  padding: 2px 6px;
+  background-color: red;
+  border-radius: 10px;
+  color: #fff;
+}
+.itemCenter {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  color: #999;
+  /* margin-top: 20px; */
+  /* margin-left: -20px; */
+}
+.itemMargin25 {
+  margin-top: 25px;
+}
+.itemMargin260 {
+  margin-left: 225px;
+}
+.teacherBlock {
+  padding: 10px 0px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 25px;
+}
+.itemName {
+  width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.seesee {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+  margin-top: -3px;
+}
+.teacherTag {
+  padding: 0 3px;
+  border-radius: 4px;
+  background: #ec2a2b;
+  color: #fff;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  line-height: 18px;
+}
+@media screen and (max-width: 980px) {
+  body {
+    overflow: visible;
+    width: 1200px;
+  }
+  .pageinfoContainer {
+    padding: 70px 0;
+  }
+}

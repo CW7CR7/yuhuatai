@@ -1,0 +1,7 @@
+<?php
+return array (
+  'contents' => '<div class="row cl"><label class="form-label col-xs-4 col-sm-2">活动管理员：</label><div class="formControls col-xs-8 col-sm-9"><input type="text" class="input-text required" errortips="必填项不能为空" value="tang" name="manager" placeholder="管理员用户名"></div></div><div class="row cl"><label class="form-label col-xs-4 col-sm-2">讲师名单：</label><div class="formControls col-xs-8 col-sm-9"><input type="text" class="input-text required" errortips="必填项不能为空" value="" name="speakers" placeholder="讲师用户名, ;分割"></div></div><div class="row cl"><label class="form-label col-xs-4 col-sm-2">默认背景：</label><div class="formControls col-xs-8 col-sm-9"><input type="text" class="input-text required" errortips="必填项不能为空" value="https://ssl.hongyanlv.com" name="kankanurl" placeholder=""></div></div><div class="row cl"><label class="form-label col-xs-4 col-sm-2">开始时间：</label><div class="formControls col-xs-8 col-sm-9"><script type="text/javascript" src="https://ssl.hongyanlv.com/common/static/plugin/laydate/1.1/laydate.js"></script><input class="laydate-icon date"  value="" name="start_time" id="start_time" ><script type="text/javascript"> laydate({elem: "#start_time",istime: true,format: "YYYY-MM-DD hh:mm:ss",});</script></div></div>',
+  'expire' => 0,
+  'mtime' => 1591586465,
+);
+?>

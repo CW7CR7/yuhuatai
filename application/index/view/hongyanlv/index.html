@@ -1,0 +1,529 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no" />
+  <title>{$seo_title}</title>
+
+  <link rel="stylesheet" type="text/css" href="{STATIC_URL}plugin/swiper/css/swiper.min.css" />
+
+  <link href="{STATIC_URL}css/yzm-common.css" rel="stylesheet" type="text/css" />
+
+  <link href="{STATIC_URL}css/yzm-style.css" rel="stylesheet" type="text/css" />
+
+  <link href="{STATIC_URL}assets/css/test.css" rel="stylesheet" />
+
+  <link href="{STATIC_URL}assets/css/header.css" rel="stylesheet" />
+
+  <link href="{STATIC_URL}assets/css/footer.css" rel="stylesheet" />
+
+  <script type="text/javascript" src="{STATIC_URL}js/jquery-1.8.2.min.js"></script>
+
+  <script type="text/javascript" src="{STATIC_URL}plugin/swiper/js/swiper.min.js"></script>
+
+  <meta name="keywords" content="{$keywords}" />
+
+  <meta name="description" content="{$description}" />
+  <meta name="viewport" content="user-scalable=yes" />
+
+  <!-- <meta
+      http-equiv="mobile-agent"
+      content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=no"
+    /> -->
+  <!-- content="format=xhtml;url={$site[site_url]}index.php?m=mobile" -->
+  <!-- <script type="text/javascript">
+      if (window.location.toString().indexOf("pref=padindex") != -1) {
+      } else {
+        if (
+          /AppleWebKit.*Mobile/i.test(navigator.userAgent) ||
+          /MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(
+            navigator.userAgent
+          )
+        ) {
+          if (window.location.href.indexOf("?mobile") < 0) {
+            try {
+              if (
+                /Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(
+                  navigator.userAgent
+                )
+              ) {
+                window.location.href = "{$site[site_url]}";
+              } else if (/iPad/i.test(navigator.userAgent)) {
+              } else {
+              }
+            } catch (e) {}
+          }
+        }
+      }
+    </script> -->
+</head>
+
+<body class="bodyClass">
+  {m:include "index","header"}
+
+  <div class="main-container">
+    <div class="box" style="width: 100%; padding-top: 0;">
+      <div class="block" style="margin: 0 auto; height: 380px;width: 100%">
+        <div class="banner-box">
+          <div class="images">
+            <div class="swiper-container swiper0" style="height: 100%;">
+              <div class="swiper-wrapper">
+                {m:banner field="title,image,url,typeid,status" limit="10"}
+                {loop $data $v}
+
+                <div class="swiper-slide">
+                  <a href="{$v[url]}" target="_blank">
+                    <img style="width: 100%; height: 100%;" src="{$v[image]}" title="{$v[title]}" />
+                  </a>
+                </div>
+
+                {/loop}
+              </div>
+              <div class="yzm-button-next nextEl0" tabindex="0" role="button" aria-label="Next slide"
+                aria-disabled="false"></div>
+              <div class="yzm-button-prev prevEl0" tabindex="0" role="button" aria-label="Previous slide"
+                aria-disabled="false"></div>
+              <div class="swiper-pagination spagination0"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box boxbgF2">
+      <div class="block" style="margin-bottom: 40px;">
+        <div class="content-box">
+          <div class="title">
+            <div class="text">数字展馆</div>
+
+            <img class="titIcon" src="{STATIC_URL}assets/img/newImg/round.png" />
+            <div class="titBtn">
+              <a class="readMore" href="{$site[site_url]}shuzizhanguan">查看更多</a>
+            </div>
+          </div>
+
+          <div style="width: 1200px;">
+            <div class="row-warp-container">
+              {m:lists field="title,url,color,inputtime,thumb,username,click,kankanurl,is_charge"
+              modelid="5" limit="8"} {loop $data $k=>$v} {php $k=$k+1;}
+
+              <div class="text-thumb">
+                <a href="{$v[kankanurl]}">
+                  <img src="{get_thumb($v['thumb'])}" />
+
+                </a>
+                <?php if ($v['is_charge'] != 2) {  ?>
+                <span class="is_charge"><?php $a = $v['is_charge']== 1 ? '限时免费' : '免费';echo $a; ?></span>
+                <?php }?>
+                <div class="info">
+                  {$v['title']}
+                </div>
+                <div class="info infoThumb infoCss">
+                  <span>{$v['username']}</span>
+                  <p class="itemCenter">
+                    <span style="
+                          background-image: url({STATIC_URL}assets/img/newImg/icon-eye2.png);
+                          background-size: 100% 100%;
+                        " class="seesee">
+                    </span>
+                    {$v['click']}
+                  </p>
+                </div>
+              </div>
+
+              {/loop}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box boxRed" style="
+          background-image: url({STATIC_URL}assets/img/newImg/base-bg.jpg);
+          background-size: 100% 100%;
+          padding-bottom: 80px;
+        ">
+      <div class="block">
+        <div class="content-box redContent">
+          <div class="title titBlock">
+            <div class="text redTxt redTxtCss">重点合作红色文化教育基地</div>
+
+            <img style="width: 18px;" class="titIcon redTitIcon" src="{STATIC_URL}assets/img/newImg/round1.png" />
+          </div>
+
+          <div class="images">
+            <div class="">
+              <div class="">
+                {m:lists field="title,url,color,inputtime,thumb" modelid="9"
+                limit="6"}
+
+                <div class="swiper-slide" style="display: flex; justify-content: center;">
+                  {loop $data $k=>$v} {php $k=$k+1;}
+                  <a href="{$v[url]}"><img class="redImg" width="150" height="150" src="{get_thumb($v['thumb'])}" /></a>
+
+                  {/loop}
+                </div>
+              </div>
+
+              <div class="swiper-pagination spagination1"></div>
+            </div>
+            <div class="imagecss">
+              <a class="readMore" href="{$site[site_url]}minijidi">查看更多</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="box boxbgF2" style="padding-bottom: 60px;">
+      <div class="block specialBlock">
+        <div class="blockLeft">
+          <div class="content-box">
+            <div class="title">
+              <div class="text">专题系列</div>
+
+              <img class="titIcon" src="{STATIC_URL}assets/img/newImg/round.png" />
+
+            </div>
+
+            <div class="content" style="height: 514px; overflow: hidden;">
+              <a href="{$site[site_url]}activity" style="display: inline-block;">
+                <div style="
+                      display: flex;
+                      flex-direction: row;
+                      height: 100%;
+                      width: 100%;
+                      padding: 10px;
+                    ">
+                  <img src="{STATIC_URL}assets/img/newImg/aa1.jpg" style="
+                        height: auto;
+                        width: 70%;
+                        border-radius: 5px;
+                      " />
+
+                  <div style="
+                        display: flex;
+                        flex-direction: column;
+                        height: 100%;
+                        width: 50%;
+                        padding: 5px;
+                        margin-right: 12px;
+                        padding-bottom: 0;
+                      ">
+                    <img src="{STATIC_URL}assets/img/newImg/aa2.jpg" style="
+                          height: 245px;
+                          width: 100%;
+                          border-radius: 5px;
+                          margin-bottom: 5px;
+                          margin-top: -5px;
+                        " />
+
+                    <img src="{STATIC_URL}assets/img/newImg/aa3.jpg"
+                      style="height: 245px; width: 100%; border-radius: 5px;" />
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="blockRight">
+          <div class="content-box" style="margin-bottom: 35px;">
+            <div class="title">
+              <div class="text">新闻</div>
+
+              <img class="titIcon" src="{STATIC_URL}assets/img/newImg/round.png" />
+              <a class="readMore" href="{$site[site_url]}article" style="float: right; margin-top: 10px;">查看更多</a>
+            </div>
+
+            <div class="content" style="
+                  height: 160px;
+                  overflow-y: hidden;
+                  background-color: #fff;
+                ">
+              <div class="column-container" style="padding-top: 15px; padding-left: 20px;">
+                <!-- <div class="news tagHot">
+
+                                    <div class="title"><a href="#">爆特朗普总统狼狈藏地库</a><span class="label-hot">HOT</span></div>
+
+                                    <div class="desc">本用于防止外敌入侵的地堡，却在关键时刻救了特朗普“一命”。这事说起来滑稽、可笑，却又无比的真实。据观察者网证实，在5月29日示威者围攻白宫的当天夜晚，白宫响起刺耳的警报声。</div>
+
+                                </div> -->
+
+                {m:lists
+                field="title,url,userid,color,inputtime,username,thumb,description,flag"
+                modelid="1" order="RAND()" limit="8"} {loop $data $k=>$v} {php
+                $k=$k+1;}
+
+                <div class="news">
+                  <h4 class="title"><a href="{$v[url]}">{$v['title']}</a></h4>
+                </div>
+
+                {/loop}
+              </div>
+            </div>
+          </div>
+
+          <div class="content-box">
+            <div class="title">
+              <div class="text">热门推荐</div>
+
+              <img class="titIcon" src="{STATIC_URL}assets/img/newImg/round.png" />
+              <a class="readMore" href="{$site[site_url]}activity" style="float: right; margin-top: 10px;">查看更多</a>
+            </div>
+
+            <div class="content" style="
+                  height: 260px;
+                  overflow-y: hidden;
+                  background-color: transparent;
+                ">
+              <div class="column-container">
+                {m:lists
+                field="title,url,userid,color,inputtime,username,thumb,description"
+                modelid="5" order="RAND()" limit="8"} {loop $data $k=>$v} {php
+                $k=$k+1;}
+
+                <div class="recommend">
+                  <div class="image-area">
+                    <a href="{$site[site_url]}activity"><img src="{get_thumb($v['thumb'])}" /></a>
+                  </div>
+
+                  <div class="text-area">
+                    <div class="desc">
+                      <a href="{$site[site_url]}activity">{$v['description']}</a>
+                    </div>
+
+                    <div class="writer">
+
+
+                      <div class="name">{$v['username']}</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/loop}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box boxRed" style="
+          background-image: url({STATIC_URL}assets/img/newImg/lecturer-bg.jpg);
+          background-size: 100% 100%;
+          height: 395px;
+        ">
+      <div class="block">
+        <div class="content-box redContent">
+          <div class="title titBlock">
+            <div class="text redTxt redTxtCss" style="color: #232323;">
+              讲师风采
+            </div>
+
+            <img style="width: 18px;" class="titIcon redTitIcon" src="{STATIC_URL}assets/img/newImg/round.png" />
+          </div>
+
+          <div class="images">
+            <div class="">
+              <div class="">
+                <div class="swiper-slide" style="display: flex; justify-content: center;">
+                  {m:lists
+                  field="title,url,color,inputtime,thumb,click,description "
+                  modelid="6" order="RAND()" limit="6"} {loop $data $k=>$v}
+                  {php $k=$k+1;}
+
+                  <div class="one-lecturer">
+                    <a href="{$v[url]}"><img class="redImg teacherImgs" style="margin-right: 0;" width="120"
+                        height="120" src="{get_thumb($v['thumb'])}" /></a>
+                    <h3 class="teacherH3">{$v[title]}</h3>
+                    <p class="teacherDes">{$v[description]}</p>
+                    <div class="info infoThumb infoCss">
+                      <!-- <span>{$v['username']}</span> -->
+                      <p class="itemCenter" style="justify-content: center;">
+                        <span style="
+                              background-image: url({STATIC_URL}assets/img/newImg/icon-eye2.png);
+                              background-size: 100% 100%;
+                            " class="seesee">
+                        </span>
+                        {$v['click']}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/loop}
+                </div>
+              </div>
+
+              <div class="swiper-pagination spagination3"></div>
+            </div>
+            <div class="imagecss">
+              <a class="readMore" href="{$site[site_url]}teacher">查看更多</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <script type="text/javascript">
+    function SwiperFn(idx, dom, aliasNext, aliasPrev) {
+      var autoplay = null;
+
+      if (idx === 1 || idx === 3) {
+        autoplay = false;
+      } else {
+        autoplay = {
+          delay: 4500,
+
+          disableOnInteraction: false,
+        };
+      }
+
+      var swiper = new Swiper(dom, {
+        loop: true,
+
+        centeredSlides: true,
+
+        autoplay: autoplay,
+
+        observer: true, //修改swiper自己或子元素时，自动初始化swiper
+
+        observeParents: true, //修改swiper的父元素时，自动初始化swiper
+
+        pagination: {
+          el: ".swiper-pagination.spagination" + idx,
+
+          clickable: true,
+        },
+
+        navigation: {
+          nextEl: ".yzm-button-next" + aliasNext + idx,
+
+          prevEl: ".yzm-button-prev" + aliasPrev + idx,
+        },
+      });
+
+      var $next = $(".yzm-button-next" + aliasNext + idx),
+        $prev = $(".yzm-button-prev" + aliasPrev + idx),
+        $pagination = $(".swiper-pagination.spagination" + idx);
+
+      if (!idx || idx === 1 || idx === 2 || idx === 3) {
+        if (idx === 1 || idx === 2 || idx === 3) {
+          $pagination.hide();
+
+          $next.hide();
+
+          $prev.hide();
+          return;
+        }
+
+        $next.hide();
+
+        $prev.hide();
+      }
+
+      $("div.images:eq(" + idx + ")").hover(
+        function () {
+          $next.fadeIn();
+
+          $prev.fadeIn();
+        },
+        function () {
+          if (idx) {
+            return;
+          }
+
+          $next.fadeOut();
+
+          $prev.fadeOut();
+        }
+      );
+    }
+
+    // toggleElClass
+    $.extend({
+      toggleElClass: function (dom, cName) {
+        $(dom).each(function (i, item) {
+          $(item).hover(
+            function () {
+              $(this).addClass(cName);
+            },
+            function () {
+              $(this).removeClass(cName);
+            }
+          );
+        });
+      },
+      getActiveIdx: function () {
+        let str = window.location.href;
+        if (str.match("activity")) {
+          return 1;
+        } else if (str.match("teacher")) {
+          return 2;
+        } else if (str.match("minijidi")) {
+          return 3;
+        } else if (str.match("article")) {
+          return 4;
+        } else {
+          return 0;
+        }
+      },
+    });
+
+    function clickSearchInput(e) {
+      e.stopPropagation();
+      $("div.selectDiv").show();
+    }
+
+    function clickSearchLi(e) {
+      e.stopPropagation();
+      $("div.ulInput").text(e.currentTarget.innerText);
+      $("div.selectDiv").hide();
+    }
+
+    $(function () {
+      let $selectDiv = $("div.selectDiv");
+      $("body").on("click", function (e) {
+        e.stopPropagation();
+        if ($selectDiv.css("display") !== "none") {
+          $selectDiv.hide();
+        }
+      });
+
+      $(document).scroll(function () {
+        $selectDiv.hide();
+      });
+
+      //近期活动马上看
+      let currentHours = new Date().getHours();
+      $(".actTimer.active[data-Idx=" + 10 + "]")
+        .find("img")
+        .addClass("activeActicityChildren")
+        .parent()
+        .siblings(".startTime")
+        .addClass("redColor")
+        .text("直播中");
+
+      $(".actTimer.active").each(function (i, item) {
+        $(item).find("a").removeAttr("href");
+      });
+
+      $.toggleElClass("div.recommend", "shadowCSS"); // 热门推荐   hoverCss
+      $.toggleElClass("div.text-thumb", "blockShadow"); // 正在热播 往期推荐     hoverCss
+
+      SwiperFn(0, ".swiper-container.swiper0", ".nextEl", ".prevEl"); //banner 轮播
+      // SwiperFn(1, ".swiper-container.swiper1", ".nextEl", ".prevEl"); //红色基地  轮播
+      // SwiperFn(3, ".swiper-container.swiper3", ".nextEl", ".prevEl"); //讲师  轮播
+    });
+  </script>
+
+  {m:include "index","footer"}
+</body>
+
+</html>

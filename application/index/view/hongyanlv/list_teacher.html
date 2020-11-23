@@ -1,0 +1,116 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<title>{$seo_title}</title>
+
+	<link href="{STATIC_URL}css/yzm-common.css" rel="stylesheet" type="text/css" />
+
+	<link href="{STATIC_URL}css/yzm-style.css" rel="stylesheet" type="text/css" />
+
+	<link href="{STATIC_URL}assets/css/header.css" rel="stylesheet">
+</head>
+
+<link href="{STATIC_URL}assets/css/footer.css" rel="stylesheet">
+</head>
+
+<link href="{STATIC_URL}assets/css/teachers.css" rel="stylesheet">
+</head>
+
+<script type="text/javascript" src="{STATIC_URL}js/jquery-1.8.2.min.js"></script>
+
+<script type="text/javascript" src="{STATIC_URL}js/yzm-front.js"></script>
+
+<meta name="keywords" content="{$keywords}" />
+
+<meta name="description" content="{$description}" />
+
+</head>
+
+<body>
+
+	{m:include "index","header"}
+
+	<div class="main-container">
+
+		<div class="topView"
+			style="background-image: url({STATIC_URL}assets/img/newImg/base-bg.jpg);background-size: 100% 100%;">
+			<div class="topImg"
+				style="background-image: url({STATIC_URL}assets/img/newImg/hongyl.png);background-size: 100% 100%;">
+			</div>
+		</div>
+
+		<div class="activities">
+
+			{m:lists field="title,url,color,inputtime,thumb,click,description
+			" modelid="6" order="RAND()" limit="8" page="page"} {loop $data $k=>$v}
+			{php $k=$k+1;}
+
+			<div class="activity" style="position: relative;">
+				<div class="teacherTag">金牌讲师</div>
+				<a href="{$v['url']}" style="display: block;">
+
+					<img class="icon" src="{get_thumb($v['thumb'])}">
+
+					<div class="info" style="    margin-bottom: 10px;    font-size: 18px;">
+
+						{$v['title']}
+
+					</div>
+					<div class="info textOverflow">
+
+						{$v['description']}
+					</div>
+					<p class="itemCenter" style="">
+						<span style="
+								background-image: url({STATIC_URL}assets/img/newImg/icon-eye2.png);
+								background-size: 100% 100%; 
+							  " class="seesee">
+						</span>
+						{$v['click']}
+					</p>
+				</a>
+
+			</div>
+
+
+
+			{/loop}
+			<div class="pageinfoContainer">{$pages}</div>
+		</div>
+
+	</div>
+	<script type="text/javascript">
+		// function resizeContent() {
+		// 	$("div.main-container").css("minHeight", document.documentElement.clientHeight - $("div.top").height() - $("div.header-container").height() );
+		// }
+		// // $(window).resize(resizeContent);
+		// $(function () {
+		// 	// teacher 底部高度自适应
+		// 	resizeContent();
+		// });
+
+		// toggleElClass 
+		$.extend({
+			"toggleElClass": function (dom, cName) {
+				$(dom).each(function (i, item) {
+					$(item).hover(function () {
+						$(this).addClass(cName)
+					}, function () {
+						$(this).removeClass(cName)
+					})
+				})
+			}
+		});
+
+		$(function () {
+			$.toggleElClass('div.activity', 'blockShadow')// 正在热播 往期推荐     hoverCss
+		});
+
+	</script>
+	{m:include "index","footer"}

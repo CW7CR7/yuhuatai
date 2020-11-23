@@ -1,0 +1,383 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", Arial, sans-serif;
+  font-size: 12px;
+}
+
+.top {
+  width: 100%;
+
+  height: 30px;
+
+  background-color: rgb(238, 238, 238);
+}
+
+.t_center {
+  width: 1200px;
+  margin: auto;
+  display: -webkit-flex; /* Safari */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 30px;
+  line-height: 30px;
+  /* padding-right: 31px;
+  padding-left: 21px; */
+}
+.t_login > a:hover {
+  color: #454545;
+}
+.t_txt {
+  width: 500px;
+}
+
+.header-container .header-content .nav .nav-item > a.activeTxt,
+.header-container .header-content .nav .nav-item > a.activeTxt:hover {
+  color: red;
+  border-bottom: 2px solid red;
+}
+
+
+.t_login {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.t_login > span {
+  color: #d3d3d3;
+  margin: 0 8px;
+}
+
+.header-container {
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.header-container .header-content {
+  width: 1200px;
+  display: -webkit-flex;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  background-color: #ffffff;
+  margin: 0 auto;
+  height: 90px;
+  line-height: 90px;
+}
+
+.header-container .header-content .icon {
+  line-height: 90px;
+  height: 90px;
+}
+
+.header-container .header-content .icon img {
+  width: 185px;
+  margin-top: 18px;
+  margin-left: 10px;
+}
+
+.header-container .header-content .nav {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  text-align: left;
+  margin-left: 155px;
+}
+
+.header-container .header-content .nav .nav-item {
+  /* display: inline-block; */
+  float: left;
+  font-size: 16px;
+  color: #909399;
+  text-align: center;
+  background-color: transparent;
+  padding-left: 20px;
+  padding-right: 30px;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", Arial, sans-serif;
+  border-bottom: 2px solid transparent;
+}
+
+.header-container .header-content .nav .search {
+  margin-top: 24px;
+  margin-left: 150px;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  display: inline-block;
+}
+
+.header-container .header-content .nav .search form {
+  height: 42px;
+  line-height: 42px;
+}
+
+.header-container .header-content .nav .search form :focus {
+  outline: none;
+}
+
+.header-container .header-content .nav .search input {
+  width: 192px;
+  background-color: #f9f9da;
+  border: 2px solid #d1d1d1;
+  height: 30px;
+  border-radius: 30px;
+  background: none;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #ddd;
+  padding-left: 77px;
+}
+
+.header-container .header-content .nav .search button {
+  background-color: transparent;
+  position: absolute;
+  border: none;
+  top: 12px;
+  right: 11px;
+}
+
+.header-container .header-content .nav .search button:before {
+  content: url(../img/searchIcon.png);
+}
+
+.header-container .header-content .login-zone {
+  position: relative;
+
+  right: 50px;
+
+  float: right;
+}
+
+.header-container .header-content .login-zone .login-item {
+  font-size: 18px;
+
+  color: #6d6d6d;
+
+  font-family: 幼圆;
+
+  font-weight: bolder;
+
+  transform: scale(1, 0.95);
+
+  text-align: center;
+
+  margin: 35px 0;
+
+  background-color: transparent;
+
+  position: relative;
+
+  display: inline-block;
+}
+.header-container .header-content .nav .nav-item > a {
+  display: inline-block;
+  height: 60px;
+  border: 2px solid transparent;
+  color: #888;
+}
+.header-container .header-content .nav .nav-item > a:focus {
+  color: red;
+  /* border-bottom-color: red; */
+  padding-bottom: 10px;
+}
+.header-container .header-content .nav .nav-item > a:hover {
+  color: #303133;
+}
+.header-container .header-content .nav .nav-item > a:active {
+  color: #6d6d6d;
+}
+#searchId {
+  position: relative;
+  top: 11px;
+  left: 65px;
+  border: none;
+  color: #888;
+}
+.selectContainer {
+  position: relative;
+}
+.inputTxt,
+.optionTxt {
+  position: absolute;
+  top: 10px;
+}
+.header-container
+  .header-content
+  .nav
+  .search
+   input::-webkit-input-placeholder {
+  color: red;
+}
+
+@media only screen and (max-width: 600px) {
+  /*当屏幕尺寸小于600px时，应用下面的CSS样式*/
+
+  .header-container {
+    width: 100%;
+
+    min-width: 100px;
+
+    position: relative;
+
+    height: 50px;
+
+    background-color: #f3f4f6;
+  }
+
+  .header-container .header-content {
+    width: 100%;
+
+    position: relative;
+
+    background-color: #ffffff;
+  }
+
+  .header-container .header-content .icon {
+    display: none;
+  }
+
+  .header-container .header-content .nav {
+    display: none;
+  }
+
+  .header-container .header-content .login-zone {
+    position: relative;
+
+    left: 50px;
+
+    float: left;
+  }
+
+  .header-container .header-content .login-zone .login-item {
+    font-size: 18px;
+
+    color: #6d6d6d;
+
+    font-family: 幼圆;
+
+    font-weight: bolder;
+
+    transform: scale(1, 0.95);
+
+    text-align: center;
+
+    margin: 12px 0;
+
+    background-color: transparent;
+
+    position: relative;
+
+    display: inline-block;
+  }
+  .header-container .header-content .nav .nav-item > a:focus {
+    color: red;
+  }
+  .nav-item > a:hover {
+    color: #303133;
+  }
+  .nav-item > a:active {
+    color: #6d6d6d;
+  }
+}
+
+.header-container .header-content .nav .nav-item > a.firstPage {
+  position: relative;
+  color: #ec2a2b;
+}
+.firstPage::after {
+  display: block;
+  content: "";
+  height: 4px;
+  width: 20px;
+  background: #ec2a2b;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-10px);
+  -ms-transform: translateX(-10px);
+  transform: translateX(-10px);
+  margin-top: -27px;
+}
+.searchParent {
+  width: 50px;
+  position: relative;
+  display: inline-block;
+}
+.searchParent input {
+  width: 30px;
+  height: 25px;
+  padding-left: 0;
+  padding: 5px 10px;
+}
+.selectDiv {
+  width: 62px;
+  position: absolute;
+  top: 24px;
+  z-index: 2;
+  border-radius: 2px;
+  text-align: center;
+  display: none;
+  left: 58px;
+  background-color: #fff;
+  box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.5);
+}
+.selectDiv li {
+  padding: 5px 10px;
+  height: 25px;
+  line-height: 25px;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+}
+.selectDiv li:hover {
+  background-color: #eee;
+  border-radius: 2px;
+}
+.header-container .header-content .nav .search .ulInput {
+  width: 50px;
+  height: 25px;
+  line-height: 25px;
+  margin-left: 55px;
+  padding-left: 15px;
+  display: inline-block;
+  position: absolute;
+  left: 0px;
+  width: 50px;
+  height: 38px;
+  line-height: 38px;
+  top: -23px;
+  border-radius: 18px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.searchArrow {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  position: absolute;
+  right: -70px;
+  top: -12px;
+}
+.menu li {
+  float: left;
+  padding: 5px 20px;
+}
+.nav-item li {
+  height: 20px;
+  margin-bottom: 5px;
+}
+@media screen and (max-width: 980px) {
+  body {
+    overflow: visible;
+    width: 1200px;
+  }
+  .t_center {
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+  .header-container .header-content {
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+}

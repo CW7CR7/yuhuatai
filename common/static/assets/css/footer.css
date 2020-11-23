@@ -1,0 +1,123 @@
+.bottom-container {
+  /* min-width: 1920px; */
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #f5f7f6;
+}
+
+.bottom-container .bottom-banner {
+  color: #9a9a9c;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", Arial, sans-serif;
+  width: 100%;
+  text-align: left;
+  width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 80px;
+}
+
+.bottom-container .bottom-banner .title {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  padding-top: 55px;
+  text-align: left;
+}
+
+.bottom-container .bottom-banner .item {
+  margin: 20px;
+
+  display: inline-block;
+}
+
+.bottom-container .bottom-banner .item.itemFirst {
+  margin-left: 58px;
+  width: 150px;
+}
+.bottom-container .bottom-banner .item.itemFirst > a:hover {
+  color: #fff;
+}
+.bottom-container .bottom-info {
+  background-color: transparent;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.bottom-container .bottom-info .credit {
+  font-size: 15px;
+  padding: 20px 0;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #000;
+  opacity: 0.6;
+}
+
+
+.bottom-container .bottom-info .items {
+  width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.bottom-container .bottom-info .items .item {
+  margin: 0 20px;
+
+  font-size: 25px;
+
+  color: #9a9a9c;
+
+  font-family: 幼圆;
+
+  font-weight: bolder;
+
+  transform: scale(1, 0.95);
+
+  display: inline-block;
+}
+.aboutList > .item {
+  width: 196px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aboutList > .item > a {
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 40px;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+.aboutList > .item > a:hover {
+  color: #fff;
+}
+.creditBottom {
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", Arial, sans-serif;
+}
+.creditImg {
+  margin-left: 25px;
+  margin-right: 3px;
+}
+@media only screen and (max-width: 980px) {
+  /*当屏幕尺寸小于980px时，应用下面的CSS样式*/
+  body {
+    overflow: visible;
+    width: 1200px;
+  }
+  .bottom-container .bottom-banner {
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+  .bottom-container .bottom-banner .item.itemFirst {
+    margin-left: 62px;
+    width: 100px;
+  }
+}
+.aboutList {
+  height: 40px;
+  line-height: 40px;
+}

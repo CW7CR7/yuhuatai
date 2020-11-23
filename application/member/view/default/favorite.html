@@ -1,0 +1,69 @@
+{m:include "member","header"}
+
+<div class="yzm_member_container main">
+  {m:include "member","left"}
+
+  <div class="main_right">
+    <!-- <div class="tit">
+      <h3>收藏夹</h3>
+    </div> -->
+
+    <div class="baseInfo">
+      <div style="margin-bottom: 10px;">
+        <div class="text">待参加活动</div>
+        <img class="titIcon" src="{STATIC_URL}assets/img/newImg/round.png" />
+      </div>
+      <div>
+        <div class="row-warp-container">
+          {m:get sql="select ya.* from yzm_activity ya left join yzm_teacher yt on ya.teacher = yt.id where
+          yt.link_username='$username'" order="RAND()" limit="9"}
+          {loop $data $k=>$v} {php $k=$k+1;}
+
+          <div class="text-thumb">
+            <a href="{$v[url]}"><img src="{get_thumb($v['thumb'])}" /></a>
+
+            <div class="info">{$v['title']}</div>
+            <div class="info infoThumb infoCss">
+              <span> {$username}</span>
+              <p class="itemCenter">
+                <span style="
+                      background-image: url({STATIC_URL}assets/img/newImg/icon-eye2.png);
+                      background-size: 100% 100%;
+                    " class="seesee">
+                </span>
+                {$v['click']}
+              </p>
+            </div>
+          </div>
+
+          {/loop}
+        </div>
+
+        <div id="page">{$pages}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function resizeContent() {
+    $("div.main_left").css("minHeight", $(window).innerHeight() - 70);
+    $("div.main_right").css("minHeight", $(window).innerHeight() - 70);
+  }
+  $(window).resize(resizeContent);
+  $(function () {
+    // 个人中心 left right高度自适应
+    resizeContent();
+  });
+
+  var fx = document.getElementsByName("fx[]");
+
+  function cz(obj) {
+    for (var i = 0; i < fx.length; i++) {
+      fx[i].checked = obj.checked;
+    }
+  }
+</script>
+
+{m:include "member","footer"}
+</div>

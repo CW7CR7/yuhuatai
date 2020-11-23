@@ -1,0 +1,47 @@
+{m:include "member","header"}
+
+<div class="yzm_member_container main">
+  {m:include "member","left"}
+
+  <div class="main_right">
+    <!-- <div class="tit">
+      <h3>收藏夹</h3>
+    </div> -->
+
+    <div class="baseActivity">
+        <div style="margin-bottom: 10px;">
+          <div class="text">待参加活动</div>
+          <img
+            class="titIcon"
+            src="http://localhost:8080/common/static/assets/img/newImg/round.png"
+          />
+        </div>
+        <div class="row-warp-container">
+          {m:lists field="title,url,color,inputtime,thumb" modelid="5"
+          order="RAND()" limit="6"} {loop $data $k=>$v} {php $k=$k+1;}
+
+          <div class="text-thumb">
+            <a href="{$v[url]}"><img src="{get_thumb($v['thumb'])}" /></a>
+
+            <div class="info">{$v['title']}</div>
+          </div>
+
+          {/loop}
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var fx = document.getElementsByName("fx[]");
+
+    function cz(obj) {
+      for (var i = 0; i < fx.length; i++) {
+        fx[i].checked = obj.checked;
+      }
+    }
+  </script>
+
+  {m:include "member","footer"}
+</div>

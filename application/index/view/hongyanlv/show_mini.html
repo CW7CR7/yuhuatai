@@ -1,0 +1,524 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <title>{$seo_title}</title>
+
+  <link rel="stylesheet" type="text/css" href="{STATIC_URL}plugin/swiper/css/swiper.min.css" />
+
+  <link href="{STATIC_URL}css/yzm-common.css" rel="stylesheet" type="text/css" />
+
+  <link href="{STATIC_URL}css/yzm-style.css" rel="stylesheet" type="text/css" />
+
+  <link href="{STATIC_URL}assets/css/single_mini.css" rel="stylesheet" />
+
+  <link href="{STATIC_URL}assets/css/header.css" rel="stylesheet" />
+
+  <link href="{STATIC_URL}assets/css/footer.css" rel="stylesheet" />
+
+  <script type="text/javascript" src="{STATIC_URL}js/jquery-1.8.2.min.js"></script>
+
+  <script type="text/javascript" src="{STATIC_URL}plugin/swiper/js/swiper.min.js"></script>
+
+  <meta name="keywords" content="{$keywords}" />
+  <meta name="description" content="{$description}" />
+  <style type="text/css">
+    .picture_bottom .picture_left .prev a{display:inline-block;width:17px;height:33px;background:url({STATIC_URL}assets/img/previous-page.png) no-repeat}
+    .picture_bottom .picture_left .next a{display:inline-block;width:17px;height:33px;background:url({STATIC_URL}assets/img/next-page.png) no-repeat}
+
+  </style>
+</head>
+
+<body>
+  {m:include "index","header"}
+
+  <?php $jdData=D('jd')->where(array('id'=>$id))->find();
+    $actnum=count(D('activity')->where(array('did' => $id))->select());
+    $teachernum=count(D('teacher')->where(array('did' => $id))->select()); ?>
+  <div class="main-container">
+    <div class="backgroud">
+      <div class="bgInfo">
+        <h1 style="margin-bottom: 10px;letter-spacing: 3px;font-size: 45px;">
+          {$title}
+        </h1>
+      </div>
+      <img src="{STATIC_URL}assets/img/newImg/jdBg.jpg" />
+      <div class="miniTop">
+        <div class="topCenter">
+          <div class="centre1">
+            <img width="140" height="140" src="{get_thumb($jdData['thumb'])}" alt="" />
+          </div>
+          <div class="centre2">
+            <div class="teacherTag">全国红色文化及爱国主义教育示范单位</div>
+            <!--<h1 class="center2H" style="width: 300px;">
+              {$title}
+            </h1>-->
+            <div style="margin-top: 8px;">
+              <h2><span style="width: 1px;background: red">&nbsp;</span>  &nbsp;场馆介绍</h2>
+              <p style="text-indent:2.5em;color: #a6a6a6">{$jdData['description']}</p>
+              <h2 style="margin-top: 8px;"><span style="width: 1px;background: red">&nbsp;</span>  &nbsp;场馆讲解</h2>
+              <div style="text-indent:2.5em;color: #a6a6a6">{$jdData['content']}</div>
+            </div>
+          </div>
+          <div class="centre3">
+            <div class="right1" style="background-image: url({STATIC_URL}assets/img/newImg/jdClass.png);background-size: 100% 100%;">
+              <span>基地课程</span>
+              <h1>{$actnum}</h1>
+            </div>
+            <div class="right2" style="
+                  background-image: url({STATIC_URL}assets/img/newImg/jdTeacher.png);
+                  background-size: 100% 100%;
+                ">
+              <span>基地讲师</span>
+              <h1>{$teachernum}</h1>
+            </div>
+          </div>
+        </div>
+        <div class="topCenter" style="">
+          <ul class="ul-show">
+            <li><a href="{$site[site_url]}activity?d=jjzb&id={$id}"><img src="{STATIC_URL}assets/img/newImg/jjzbu.png" alt=""/><span>讲解直播</span></a></li>
+            <li><a href="{$site[site_url]}activity?d=jjzb&id={$id}"><img src="{STATIC_URL}assets/img/newImg/jdkcu.png" alt=""/><span>基地课程</span></a></li>
+            <li><a href="#jpgc"><img src="{STATIC_URL}assets/img/newImg/jpgcd.png" alt=""/><span>精品馆藏</span></a></li>
+            <li><a href="#qjdl"><img src="{STATIC_URL}assets/img/newImg/qjdld.png" alt=""/><span>全景导览</span></a></li>
+            <li><a href="#qjhp"><img src="{STATIC_URL}assets/img/newImg/qjhpd.png" alt=""/><span>全景航拍</span></a></li>
+            <li><a href="#zhdl"><img src="{STATIC_URL}assets/img/newImg/zhdld.png" alt=""/><span>智慧导览</span></a></li>
+            <li><a href="{$site[site_url]}activity?d=tupian&id={$id}"><img src="{STATIC_URL}assets/img/newImg/tpzsu.png" alt=""/><span>图片展示</span></a></li>
+            <li><a href="{$site[site_url]}activity?d=shipin&id={$id}"><img src="{STATIC_URL}assets/img/newImg/gqspu.png" alt=""/><span>高清视频</span></a></li>
+          </ul>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="main-content"  style=" margin-top: 180px;">
+      <div class="main-info">
+        <!-- 讲解直播 -->
+        <div class="box boxbgF2">
+          <div class="block" style="margin-bottom: 0;">
+            <div class="content-box">
+              <div class="title">
+                <div class="text">讲解直播</div>
+                <img class="titIcon" src="{STATIC_URL}assets/img/newImg/round.png" />
+                <div class="titBtn">
+                  <a class="readMore" href="{$site[site_url]}activity?d=jjzb&id={$id}">查看更多</a>
+                </div>
+              </div>
+
+              <div class="rowWap">
+                <div class="row-warp-container">
+                  {m:get sql="select * from yzm_activity where did=$id"
+                  limit="4"} {loop $data $k=>$v} {php $k=$k+1;}
+
+                  <div class="text-thumb">
+                    <a href="{$v[url]}"><img src="{get_thumb($v['thumb'])}" /></a>
+
+                    <div class="info" style="    margin-bottom: 0px;">{$v['title']}</div>
+                    <div class="info infoThumb infoCss">
+                      <span> {$username}</span>
+                      <p class="itemCenter">
+                        <span style="
+                              background-image: url({STATIC_URL}assets/img/newImg/icon-eye2.png);
+                              background-size: 100% 100%;
+                            " class="seesee">
+                        </span>
+                        {$v['click']}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/loop}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 视频模块 -->
+        <div class="box boxbgF2">
+          <div class="block" style="margin-bottom: 0;">
+            <div class="content-box">
+              <div class="title">
+
+                <div class="text">视频展示</div>
+                <img class="titIcon" src="{STATIC_URL}assets/img/newImg/round.png" />
+                <div class="titBtn">
+                  <a class="readMore" href="{$site[site_url]}activity?d=shipin&id={$id}">查看更多</a>
+                </div>
+              </div>
+
+              <div class="rowWap">
+                <div class="row-warp-container">
+                  {m:get sql="select * from yzm_resource where did=$id and type='视频' and video != ''"
+                  limit="4"} {loop $data $k=>$v} {php $k=$k+1;}
+
+                  <div class="text-thumb">
+                    <div class="videolist" vpath="{get_thumb($v['thumb'])}" ipath="{$v['video']}">
+                      <img src="{get_thumb($v['thumb'])}" />
+                    </div>
+                    <div class="info" style="    margin-bottom: 0px;">{$v['title']}</div>
+                    <div class="info infoThumb infoCss">
+                      <span> {$username}</span>
+                      <p class="itemCenter">
+                        <span style="
+                              background-image: url({STATIC_URL}assets/img/newImg/icon-eye2.png);
+                              background-size: 100% 100%;
+                            " class="seesee">
+                        </span>
+                        {$v['click']}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/loop}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 图片模块 -->
+        <div class="box boxbgF2" style="padding-bottom: 70px;">
+          <div class="block" style="margin-bottom: 0;">
+            <div class="content-box">
+              <div class="title">
+
+                <div class="text">图片展示</div>
+                <img class="titIcon" src="{STATIC_URL}assets/img/newImg/round.png" />
+                <div class="titBtn">
+                  <a class="readMore" href="{$site[site_url]}activity?d=tupian&id={$id}">查看更多</a>
+                </div>
+              </div>
+
+              <div class="rowWap">
+                <div class="row-warp-container">
+                  {m:get sql="select * from yzm_resource where did=$id and type='图片' and image != ''"
+                  limit="4"} {loop $data $k=>$v} {php $k=$k+1;}
+
+                  <div class="text-thumb">
+                    <a class="show-img" data-content='{$v["image"]}'><img src="{get_thumb($v['thumb'])}" /></a>
+
+                    <div class="info" style="    margin-bottom: 0px;">{$v['title']}</div>
+                    <div class="info infoThumb infoCss">
+                      <span> {$username}</span>
+                      <p class="itemCenter">
+                        <span style="
+                              background-image: url({STATIC_URL}assets/img/newImg/icon-eye2.png);
+                              background-size: 100% 100%;
+                            " class="seesee">
+                        </span>
+                        {$v['click']}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/loop}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 讲师风采 -->
+        <div class="box boxRed" style="background-image: url({STATIC_URL}assets/img/newImg/lecturer-bg.jpg);background-size: 100% 100%;height: 395px;">
+          <div class="block">
+            <div class="content-box redContent">
+              <div class="title titBlock">
+                <div class="text redTxt redTxtCss" style="color: #232323;">
+                  讲师风采
+                </div>
+
+                <img style="width: 18px;" class="titIcon redTitIcon" src="{STATIC_URL}assets/img/newImg/round.png" />
+              </div>
+
+              <div class="images">
+                <div class="swiper-container swiper-containerImg swiper3">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      {m:get sql="select * from yzm_teacher where did=$id"
+                      limit="4"} {loop $data $k=>$v} {php $k=$k+1;}
+
+                      <div class="one-lecturer">
+                        <a href="{$v[url]}"><img class="redImg teacherImgs" style="margin-right: 0;" width="120"
+                            height="120" src="{get_thumb($v['thumb'])}" /></a>
+                        <h3 class="teacherH3">{$v[title]}</h3>
+                        <p class="teacherDes">{$v[description]}</p>
+                      </div>
+
+                      {/loop}
+                    </div>
+                  </div>
+                  <div class="yzm-button-next nextEl3" tabindex="0" role="button" aria-label="Next slide"
+                    aria-disabled="false"></div>
+                  <div class="yzm-button-prev prevEl3" tabindex="0" role="button" aria-label="Previous slide"
+                    aria-disabled="false"></div>
+                  <div class="swiper-pagination spagination3"></div>
+                </div>
+                <div class="imagecss">
+                  <a class="readMore" href="{$site[site_url]}teacher">查看更多</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="videos"></div>
+    <div class="picture" style="display: none;">
+
+      <div class="picture_bottom">
+        <div class="picture_left">
+          <div class="picture_img">
+            <img src="" class="showImging"/>
+          </div>
+          <div class="prev">
+            <a href="###"></a>
+          </div>
+          <div class="next">
+            <a href="###"></a>
+          </div>
+        </div>
+        <div class="picture_right" style="display: none;">
+
+        </div>
+      </div>
+      <span class="shutdownimgs" style="position: absolute;right: 7px;top: 7px;font-size: 25px;cursor:pointer;border-radius: 50%;height: 25px;width: 25px;display: inline-block;  border:1px solid #dcd9d9;  vertical-align: top;">
+        <span style="display: block;color: #dcd9d9;text-align: center"> X</span>
+      </span>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    // get 页面 基地id
+    var pathname = window.location.pathname.split("/");
+    var did = pathname[pathname.length - 1].split(".")[0];
+    console.log(did);
+
+    function SwiperFn(idx, dom, aliasNext, aliasPrev) {
+      var autoplay = null;
+
+      if (idx === 1 || idx === 3) {
+        autoplay = false;
+      } else {
+        autoplay = {
+          delay: 4500,
+
+          disableOnInteraction: false,
+        };
+      }
+
+      var swiper = new Swiper(dom, {
+        loop: true,
+
+        centeredSlides: true,
+
+        autoplay: autoplay,
+
+        observer: true, //修改swiper自己或子元素时，自动初始化swiper
+
+        observeParents: true, //修改swiper的父元素时，自动初始化swiper
+
+        pagination: {
+          el: ".swiper-pagination.spagination" + idx,
+
+          clickable: true,
+        },
+
+        navigation: {
+          nextEl: ".yzm-button-next" + aliasNext + idx,
+
+          prevEl: ".yzm-button-prev" + aliasPrev + idx,
+        },
+      });
+
+      var $next = $(".yzm-button-next" + aliasNext + idx),
+        $prev = $(".yzm-button-prev" + aliasPrev + idx),
+        $pagination = $(".swiper-pagination.spagination" + idx);
+
+      if (!idx || idx === 1 || idx === 2 || idx === 3) {
+        if (idx === 1 || idx === 2 || idx === 3) {
+          $pagination.hide();
+
+          $next.hide();
+
+          $prev.hide();
+          return;
+        }
+
+        $next.hide();
+
+        $prev.hide();
+      }
+
+      $("div.images:eq(" + idx + ")").hover(
+        function () {
+          $next.fadeIn();
+
+          $prev.fadeIn();
+        },
+        function () {
+          if (idx) {
+            return;
+          }
+
+          $next.fadeOut();
+
+          $prev.fadeOut();
+        }
+      );
+    }
+
+    // toggleElClass
+    $.extend({
+      toggleElClass: function (dom, cName) {
+        $(dom).each(function (i, item) {
+          $(item).hover(
+            function () {
+              $(this).addClass(cName);
+            },
+            function () {
+              $(this).removeClass(cName);
+            }
+          );
+        });
+      },
+    });
+
+    function clickSearchInput(e) {
+      e.stopPropagation();
+      $("div.selectDiv").show();
+    }
+
+    function clickSearchLi(e) {
+      e.stopPropagation();
+      $("div.ulInput").text(e.currentTarget.innerText);
+      $("div.selectDiv").hide();
+    }
+
+    $(function () {
+      let $selectDiv = $("div.selectDiv");
+      $("body").on("click", function (e) {
+        e.stopPropagation();
+        if ($selectDiv.css("display") !== "none") {
+          $selectDiv.hide();
+        }
+      });
+
+      $(document).scroll(function () {
+        $selectDiv.hide();
+      });
+
+      //近期活动马上看
+      let currentHours = new Date().getHours();
+      $(".actTimer.active[data-Idx=" + 10 + "]")
+        .find("img")
+        .addClass("activeActicityChildren")
+        .parent()
+        .siblings(".startTime")
+        .addClass("redColor")
+        .text("直播中");
+
+      $(".actTimer.active").each(function (i, item) {
+        $(item).find("a").removeAttr("href");
+      });
+
+      $.toggleElClass("div.recommend", "shadowCSS"); // 热门推荐   hoverCss
+      $.toggleElClass("div.text-thumb", "blockShadow"); // 正在热播 往期推荐     hoverCss
+
+      SwiperFn(0, ".swiper-container.swiper0", ".nextEl", ".prevEl"); //banner 轮播
+      SwiperFn(1, ".swiper-container.swiper1", ".nextEl", ".prevEl"); //红色基地  轮播
+      SwiperFn(3, ".swiper-container.swiper3", ".nextEl", ".prevEl"); //讲师  轮播
+    });
+
+    $('.videolist').each(function() { //遍历视频列表
+      $(this).click(function(){ //这个视频被点击后执行
+        var img = $(this).attr('vpath');//获取视频预览图
+        var video = $(this).attr('ipath');//获取视频路径
+        $('.videos').html("<video id=\"video\" style='width: 100%;' src='"+video+"' preload=\"auto\" controls=\"controls\" autoplay=\"autoplay\"></video><img onClick=\"close1()\" class=\"vclose\" src=\"{STATIC_URL}assets/img/newImg/gb.png\"/>");
+
+        window.setTimeout(function () {
+          $('.videos').show();
+        }, 80);
+
+      });
+    });
+
+    function close1(){
+      var v = document.getElementById('video');//获取视频节点
+      $('.videos').hide();//点击关闭按钮关闭暂停视频
+      v.pause();
+      $('.videos').html();
+    }
+
+    $(".show-img").click(function () {
+      $(".picture_right").html('');
+      var str = $(this).data('content');
+
+      var imgs = new Array();
+      imgs = str.split('|');
+      var img = '';
+      $(".showImging").attr('src', '');
+      for (i in imgs) {
+        if (i == 0) $(".showImging").attr('src', imgs[i]);
+        img += '<img class="picture_suo_img" src="' + imgs[i] + '" />';
+      }
+
+
+      $(".picture_right").html(img);
+      $(".picture_suo_img").eq(0).addClass('suo-img');
+      $(".picture").show();
+
+    });
+
+    $(".shutdownimgs").click(function () {
+      $(".picture_right").html('');
+      $(".showImging").attr('src', '');
+
+      $(".picture").hide();
+
+    });
+
+    /*点击加载下一张缩略图*/
+    $(".next").click(function() {
+      var next = $(".suo-img").removeClass("suo-img").eq($(".picture_suo_img").index(this)).next().addClass('suo-img');
+      var src = next.attr('src');
+      var s = $(".suo-img").index();
+      if(s < 0) {
+        var src = $(".picture_suo_img").eq(0).attr('src');
+        $('.showImging').attr('src', src);
+        $(".suo-img").removeClass("suo-img");
+        $(".picture_suo_img").eq(0).addClass('suo-img');
+      } else {
+        $('.showImging').attr('src', src);
+      }
+
+    });
+
+    /*点击加载上一张缩略图*/
+    $(".prev").click(function() {
+      var prev = $(".suo-img").removeClass("suo-img").eq($(".picture_suo_img").siblings().index(this)).prev().addClass('suo-img');
+      var src = prev.attr('src');
+
+      /*判断如果是第一张图则切换到上一页最后一张图*/
+      var s = $(".suo-img").index();
+
+      if(s<0) {
+        var len = $(".picture_suo_img").length - 1;
+        var src = $(".picture_suo_img").eq(len).attr('src');
+        $('.showImging').attr('src', src);
+        $(".suo-img").removeClass("suo-img");
+        $(".picture_suo_img").eq(len).addClass('suo-img');
+      } else {
+        $('.showImging').attr('src', src);
+      }
+    });
+
+  </script>
+
+  {m:include "index","footer"}
+</body>
+
+</html>
