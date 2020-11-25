@@ -35,6 +35,31 @@
 <script type="text/javascript" src="//static.runoob.com/assets/qrcode/qrcode.min.js"></script>
 
 </head>
+<style>
+    #qrcode {
+        float: left;
+        height: 100px;
+        width: 100px;
+    }
+    
+    .qrcodeInfo {
+        text-align: left;
+        float: left;
+        /* line-height: 130px; */
+        color: #717171;
+        font-size: 16px;
+        padding-top: 35px;
+    }
+    
+    .qrcodeInfo>p {
+        margin-bottom: 5px;
+    }
+    
+    .qrcodeInfo>p:last-of-type {
+        color: #b8b8b8;
+        font-size: 12px;
+    }
+</style>
 
 <body>
 
@@ -78,25 +103,31 @@
 
 
 
-    <div class="main-container clearfixclearfix">
+        <div class="main-container clearfixclearfix">
 
-        <div class="backgroud">
+            <div class="backgroud">
 
-            <img src="{STATIC_URL}assets/img/abackground.jpg">
+                <img src="{STATIC_URL}assets/img/abackground.jpg">
 
-        </div>
+            </div>
 
-        <div class="title">{$title}</div>
+            <div class="title">{$title}</div>
 
 
 
-        <div class="main-content">
+            <div class="main-content">
 
-            <div class="main-info">
+                <div class="main-info clearfixclearfix" style="height: 130px;">
+                    <div class="text" style="width: 100%;">
+                        <div id="qrcode" class="qrcodeCss"></div>
+                        <div class="qrcodeInfo">
+                            <p>手机扫码直接观看</p>
+                            <p>高清二维码</p>
+                        </div>
+                    </div>
+                    <div class="avatar">
 
-                <div class="avatar">
-
-                    <!-- <div class="icon">
+                        <!-- <div class="icon">
 
                         <img src="{get_memberavatar($userid)}">
 
@@ -108,31 +139,27 @@
 
                     </div> -->
 
-                    <div class="text" style="width: 100%;">
-                        <div id="qrcode" class="qrcodeCss"></div>
-                        <p class="qrcodeInfo">手机扫码直接观看</p>
+
                     </div>
-                </div>
 
 
 
-                <div class="time">
+                    <!-- <div class="time">
 
-                    时长:90分钟
+                        时长:90分钟
 
-                </div>
+                    </div>
 
-                <div class="status">
+                    <div class="status">
 
-                    <!-- 直播未开始 -->
-                    讲解者： {$nickname}
+                        直播未开始 讲解者： {$nickname}
 
-                </div>
-
+                    </div> -->
 
 
-                {if $m_userId==0}
-                <a href="{url_referer(get_url())}" target="_blank" style="display: block;">
+
+                    {if $m_userId==0}
+                    <a href="{url_referer(get_url())}" target="_blank" style="display: block;">
 
 
 
@@ -167,96 +194,117 @@
                             {/if}
 
                         </div>
+                        <div class="autonomy">
+
+                            {if $m_userId==0}
+
+                            {else}
+
+                            <!-- <div id="triangle-right"></div> -->
+
+                            {/if}
+
+                            <div>自主漫游 <div id="triangle-right"></div>
+                            </div>
+
+                            {if $m_userId==0}
+
+                            {else}
+
+                            <div>进入直播间</div>
+
+                            {/if}
+
+                        </div>
                     </a>
 
 
+                </div>
+
+
+
+                <div class="main-page">
+
+
+
+
+
+                    <div class="info">
+
+                        活动介绍
+
+                    </div>
+
+                    <div class="focal-line">
+
+
+
+                    </div>
+
+                    <div class="aline">
+
+
+
+                    </div>
+
+                    <div class="text" style="    padding-bottom: 25px;">
+
+                        {$content}
+
+                    </div>
+
+                </div>
+
             </div>
-
-
-
-            <div class="main-page">
-
-
-
-
-
-                <div class="info">
-
-                    活动介绍
-
-                </div>
-
-                <div class="focal-line">
-
-
-
-                </div>
-
-                <div class="aline">
-
-
-
-                </div>
-
-                <div class="text" style="    padding-bottom: 25px;">
-
-                    {$content}
-
-                </div>
-
-            </div>
-
+            <!-- <div id="qrcode-url" style="display:none;">{$site[site_url]}member/other/wx_login.html?url={$url}</div> -->
+            <div id="qrcode-url" style="display:none;">
+                http://www.hongyanlv.com/wx/wx_login?a={$id}&b={$kankanurl}</div>
         </div>
-        <!-- <div id="qrcode-url" style="display:none;">{$site[site_url]}member/other/wx_login.html?url={$url}</div> -->
-        <div id="qrcode-url" style="display:none;">
-            http://www.hongyanlv.com/wx/wx_login?a={$id}&b={$kankanurl}</div>
-    </div>
 
-    <script type="text/javascript">
+        <script type="text/javascript">
+            var qrcode = new QRCode(document.getElementById("qrcode"), {
 
-        var qrcode = new QRCode(document.getElementById("qrcode"), {
+                width: 100,
 
-            width: 100,
+                height: 100
 
-            height: 100
-
-        });
+            });
 
 
 
-        function makeCode() {
+            function makeCode() {
 
-            var elText = document.getElementById("qrcode-url");
+                var elText = document.getElementById("qrcode-url");
 
 
 
-            if (!elText.innerText) {
+                if (!elText.innerText) {
 
-                return;
+                    return;
+
+                }
+
+
+                console.log("11111111111111-:" + elText.innerText)
+                qrcode.makeCode(elText.innerText);
 
             }
 
 
-            console.log("11111111111111-:" + elText.innerText)
-            qrcode.makeCode(elText.innerText);
 
-        }
+            makeCode();
 
 
 
-        makeCode();
+            $("#text").
 
-
-
-        $("#text").
-
-            on("blur", function () {
+            on("blur", function() {
 
                 makeCode();
 
             }).
 
-            on("keydown", function (e) {
+            on("keydown", function(e) {
 
                 if (e.keyCode == 13) {
 
@@ -267,10 +315,9 @@
             });
 
 
-        $(function () {
-            $("div.main-page p>img").removeAttr("width height style")
-        })
+            $(function() {
+                $("div.main-page p>img").removeAttr("width height style")
+            })
+        </script>
 
-    </script>
-
-    {m:include "index","footer"}
+        {m:include "index","footer"}
