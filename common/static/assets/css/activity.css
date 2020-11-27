@@ -101,10 +101,12 @@
 }
 
 .main-container .main-content .main-info .enter {
+    box-sizing: border-box;
     right: 50px;
-    bottom: 26px;
-    width: 150px;
+    bottom: 38px;
+    width: 165px;
     padding-top: 5px;
+    padding-left: 20px;
     border-radius: 5px;
     height: 50px;
     background-color: #e33638;
@@ -119,10 +121,12 @@
 }
 
 .main-container .main-content .main-info .autonomy {
-    right: 220px;
-    bottom: 26px;
-    width: 150px;
+    box-sizing: border-box;
+    right: 237px;
+    bottom: 38px;
+    width: 157px;
     padding-top: 5px;
+    padding-left: 20px;
     border-radius: 5px;
     height: 50px;
     /* line-height: 50px; */
@@ -188,10 +192,22 @@
     color: #e4353c;
 }
 
-#triangle-right {
+#triangle-right-1 {
     position: absolute;
     top: 20px;
-    left: 112px;
+    left: 135px;
+    z-index: 999;
+    width: 0px;
+    height: 0px;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 14px solid white;
+}
+
+#triangle-right-2 {
+    position: absolute;
+    top: 20px;
+    left: 122px;
     z-index: 999;
     width: 0px;
     height: 0px;
@@ -297,7 +313,7 @@
         position: absolute;
     }
     .main-container .main-content .main-info .enter {
-        width: 150px;
+        width: 170px;
         padding-top: 5px;
         border-radius: 5px;
         height: 50px;

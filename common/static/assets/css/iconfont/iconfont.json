@@ -6,11 +6,25 @@
   "description": "",
   "glyphs": [
     {
-      "icon_id": "6204091",
+      "icon_id": "67914170",
       "name": "关  闭",
       "font_class": "guanbi",
       "unicode": "e608",
       "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "68068777",
+      "name": "走路",
+      "font_class": "zoulu",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "68076547",
+      "name": "视频",
+      "font_class": "shipin",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
     }
   ]
 }
